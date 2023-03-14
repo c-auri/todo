@@ -14,7 +14,10 @@
   "keywords": [],
   "author": "c-auri",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
+    "fork-ts-checker-webpack-plugin": "^8.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.3",
     "node-sass": "^8.0.0",
     "sass-loader": "^13.2.0",
