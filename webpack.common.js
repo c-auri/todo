@@ -12,7 +12,19 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     module: {
-        rules: []
+        rules: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'ts-loader',
+                    options: {
+                        // disable type checker - we will use it in fork plugin
+                        transpileOnly: true
+                    }
+                }
+            }
+        ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
