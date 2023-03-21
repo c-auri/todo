@@ -1,12 +1,11 @@
 import { Todo } from './components/Todo'
 import './styles/main.scss'
 
-const todoList = document.querySelector('#todo-list')
+document.querySelector('#new-todo-button').addEventListener("click", addNewTodo)
 
-const todos = [
-    new Todo('Add styles'),
-    new Todo('Add add button'),
-    new Todo('Add delete button'),
-]
-
-todos.forEach(todo => todoList.appendChild(todo.render()))
+function addNewTodo() {
+    const todoList = document.querySelector('#todo-list')
+    const title = document.querySelector('#new-todo-title') as HTMLInputElement
+    const newTodo = new Todo(title.value)
+    todoList.appendChild(newTodo.render())
+}

@@ -10,6 +10,7 @@ main {
     padding: 1rem 2rem;
 }
 
+main,
 #todo-list {
     display: flex;
     flex-direction: column;
@@ -25,4 +26,16 @@ main {
     align-items: center;
     background-color: var(--clr-medium-gray);
     color: var(--clr-almost-white);
+}
+
+#new-todo-title {
+    border: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    background-color: inherit;
+
+    &:focus {
+        outline: none;
+    }
 }
