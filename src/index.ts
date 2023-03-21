@@ -1,5 +1,5 @@
 import { Todo } from './components/Todo'
-import './styles.scss'
+import './styles/main.scss'
 
 const todoList = document.querySelector('#todo-list')
 
