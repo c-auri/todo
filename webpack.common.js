@@ -58,7 +58,11 @@ module.exports = {
       chunkFilename: '[id].css'
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({}),
+    new HtmlWebpackPlugin({
+      hash: true,
+      title: 'Todo',
+      template: 'src/index.html'
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new ESLintPlugin({
       extensions: ['.tsx', '.ts', '.js'],
