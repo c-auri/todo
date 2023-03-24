@@ -1,5 +1,6 @@
+import { Todo } from './components/Todo'
 import { createTodoInput } from './components/TodoInput'
-import { Todo, createTodoList } from './components/TodoList'
+import { createTodoList } from './components/TodoList'
 import './styles/main.scss'
 
 
