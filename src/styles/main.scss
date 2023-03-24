@@ -1,3 +1,20 @@
 @use "./abstracts" as *;
 @use "./resets";
-@use "./styles";
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    background-color: var(--clr-light-gray);
+}
+
+header,
+main {
+    padding: 1rem 2rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}

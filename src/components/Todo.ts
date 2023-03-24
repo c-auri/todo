@@ -1,3 +1,5 @@
+import './Todo.scss'
+
 export interface Todo {
     title: string
 }

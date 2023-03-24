@@ -1,3 +1,5 @@
+import './TodoInput.scss'
+
 import { appendTodoList } from "./TodoList"
 
 export function createTodoInput() {

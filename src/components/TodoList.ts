@@ -1,3 +1,5 @@
+import './TodoList.scss'
+
 import { Todo, createTodo } from "./Todo"
 
 const todoListId = 'todo-list'
