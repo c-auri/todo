@@ -16,10 +16,8 @@ export function createTodo(title : string) {
 
 export function renderTodo(todo : Todo, deleteTodo : (todo: Element) => void) {
     const li = document.createElement('li')
+    li.classList.add('todo')
     li.setAttribute('data-id', ""+todo.id)
-
-    const container = document.createElement('article')
-    container.classList.add('todo')
 
     const title = document.createElement('span')
     title.classList.add('todo__title')
@@ -30,8 +28,7 @@ export function renderTodo(todo : Todo, deleteTodo : (todo: Element) => void) {
     deleteButton.innerHTML = "x"
     deleteButton.addEventListener('click', () => deleteTodo(li))
 
-    container.appendChild(title)
-    container.appendChild(deleteButton)
-    li.appendChild(container)
+    li.appendChild(title)
+    li.appendChild(deleteButton)
     return li
 }
