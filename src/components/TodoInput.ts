@@ -1,6 +1,7 @@
 import './TodoInput.scss'
 
 import { appendTodoList } from "./TodoList"
+import { createTodo } from './Todo'
 
 export function renderTodoInput() {
     const main = document.querySelector('main')
@@ -35,6 +36,6 @@ function createAddButton() {
 
 function addNewTodo() {
     const title = document.querySelector('#new-todo-title') as HTMLInputElement
-    appendTodoList({ title: title.value })
+    appendTodoList(createTodo(title.value))
     title.value = ''
 }
