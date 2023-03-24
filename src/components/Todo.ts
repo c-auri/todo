@@ -4,7 +4,7 @@ export interface Todo {
     title: string
 }
 
-export function createTodo(todo : Todo) {
+export function renderTodo(todo : Todo) {
     const li = document.createElement('li')
 
     const container = document.createElement('article')

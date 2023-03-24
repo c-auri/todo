@@ -2,7 +2,9 @@ import './TodoInput.scss'
 
 import { appendTodoList } from "./TodoList"
 
-export function createTodoInput() {
+export function renderTodoInput() {
+    const main = document.querySelector('main')
+
     const form = document.createElement('form')
     form.classList.add('todo')
     form.id = 'new-todo'
@@ -10,7 +12,7 @@ export function createTodoInput() {
     form.appendChild(createTitleInput())
     form.appendChild(createAddButton())
 
-    return form
+    main.appendChild(form)
 }
 
 function createTitleInput() {
