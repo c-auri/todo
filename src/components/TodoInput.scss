@@ -4,17 +4,3 @@
     padding: .25rem .75rem;
     background-color: var(--clr-almost-white);
 }
-
-#new-todo-button {
-    border: 0;
-    border-radius: 5px;
-    padding-inline: 1rem;
-    font-weight: bold;
-    font-size: 1.25rem;
-    color: var(--clr-dark-gray);
-    background-color: var(--clr-almost-white);
-
-    &:hover {
-        cursor: pointer;
-    }
-}
