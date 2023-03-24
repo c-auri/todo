@@ -12,12 +12,16 @@ export function renderTodoList(todos : Todo[] = []) {
     todoList.id = todoListId
 
     for (const todo of todos) {
-        todoList.appendChild(renderTodo(todo))
+        todoList.appendChild(renderTodo(todo, deleteTodo))
     }
 
     main.appendChild(todoList)
 }
 
 export function appendTodoList(todo : Todo) {
-    document.getElementById(todoListId).appendChild(renderTodo(todo))
+    document.getElementById(todoListId).appendChild(renderTodo(todo, deleteTodo))
+}
+
+function deleteTodo(li : Element) {
+    document.getElementById(todoListId).removeChild(li)
 }

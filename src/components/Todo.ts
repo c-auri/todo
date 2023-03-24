@@ -14,18 +14,24 @@ export function createTodo(title : string) {
     }
 }
 
-export function renderTodo(todo : Todo) {
+export function renderTodo(todo : Todo, deleteTodo : (todo: Element) => void) {
     const li = document.createElement('li')
+    li.setAttribute('data-id', ""+todo.id)
 
     const container = document.createElement('article')
     container.classList.add('todo')
-    container.setAttribute('data-id', ""+todo.id)
 
     const title = document.createElement('span')
     title.classList.add('todo__title')
     title.innerHTML = todo.title
 
+    const deleteButton = document.createElement('button')
+    deleteButton.classList.add('todo__button')
+    deleteButton.innerHTML = "x"
+    deleteButton.addEventListener('click', () => deleteTodo(li))
+
     container.appendChild(title)
+    container.appendChild(deleteButton)
     li.appendChild(container)
     return li
 }
