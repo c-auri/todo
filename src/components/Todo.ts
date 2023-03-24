@@ -1,18 +1,6 @@
+import { Todo } from '../models/Todo'
+
 import './Todo.scss'
-
-let numberOfTodos = 0
-
-export interface Todo {
-    id: number
-    title: string
-}
-
-export function createTodo(title : string) {
-    return {
-        id: numberOfTodos++,
-        title: title
-    }
-}
 
 export function renderTodo(todo : Todo, deleteTodo : (todo: Element) => void) {
     const li = document.createElement('li')

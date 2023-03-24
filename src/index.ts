@@ -1,4 +1,4 @@
-import { Todo } from './components/Todo'
+import { Todo } from './models/Todo'
 import { renderTodoInput } from './components/TodoInput'
 import { renderTodoList } from './components/TodoList'
 import './styles/main.scss'

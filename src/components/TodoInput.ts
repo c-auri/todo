@@ -1,7 +1,7 @@
 import './TodoInput.scss'
 
+import { createTodo } from '../models/Todo'
 import { appendTodoList } from "./TodoList"
-import { createTodo } from './Todo'
 
 export function renderTodoInput() {
     const main = document.querySelector('main')

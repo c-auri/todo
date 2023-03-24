@@ -1,6 +1,7 @@
 import './TodoList.scss'
 
-import { Todo, renderTodo } from "./Todo"
+import { Todo } from '../models/Todo'
+import { renderTodo } from "./Todo"
 
 const todoListId = 'todo-list'
 
