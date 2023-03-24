@@ -2,15 +2,22 @@ export interface Todo {
     title: string
 }
 
+const todoListId = 'todo-list'
+
 export function createTodoList(todos : Todo[] = []) {
     const todoList = document.createElement('ul')
     todoList.classList.toggle('todo-list')
+    todoList.id = todoListId
 
     for (const todo of todos) {
         todoList.appendChild(render(todo))
     }
 
     return todoList
+}
+
+export function appendTodoList(todo : Todo) {
+    document.getElementById(todoListId).appendChild(render(todo))
 }
 
 function render(todo : Todo) {
