@@ -3,6 +3,8 @@ import './TodoList.scss'
 import { Project } from '../models/Project'
 import { Todo } from '../models/Todo'
 
+import { createTodoInput } from './TodoInput'
+
 const todoListId = 'todo-list'
 
 export function renderTodoList(project : Project) {
@@ -17,6 +19,7 @@ export function renderTodoList(project : Project) {
     }
 
     main.appendChild(todoList)
+    main.appendChild(createTodoInput())
 }
 
 export function appendTodoList(todo : Todo) {

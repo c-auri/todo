@@ -3,17 +3,13 @@ import './TodoInput.scss'
 import { createTodo } from '../models/Todo'
 import { appendTodoList } from "./TodoList"
 
-export function renderTodoInput() {
-    const main = document.querySelector('main')
-
+export function createTodoInput() {
     const form = document.createElement('form')
     form.classList.add('todo')
     form.id = 'new-todo'
-    
     form.appendChild(createTitleInput())
     form.appendChild(createAddButton())
-
-    main.appendChild(form)
+    return form
 }
 
 function createTitleInput() {
