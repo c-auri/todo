@@ -1,10 +1,10 @@
-import { Todo } from './models/Todo'
+import { Project } from './models/Project'
 import { renderTodoInput } from './components/TodoInput'
 import { renderTodoList } from './components/TodoList'
 import './styles/main.scss'
 
 
-const todoList : Todo[] = []
+const inbox = new Project('Inbox')
 
-renderTodoList(todoList)
+renderTodoList(inbox)
 renderTodoInput()
