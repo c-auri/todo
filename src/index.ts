@@ -1,8 +1,4 @@
-import { Project } from './models/Project'
-import { renderTodoList } from './components/TodoList'
 import './styles/main.scss'
+import { initialize } from './controller/TodoController'
 
-
-const inbox = new Project('Inbox')
-
-renderTodoList(inbox)
+initialize()

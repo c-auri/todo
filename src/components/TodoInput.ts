@@ -1,7 +1,7 @@
 import './TodoInput.scss'
 
 import { createTodo } from '../models/Todo'
-import { appendTodoList } from "./TodoList"
+import { appendTodo } from '../controller/TodoController'
 
 export function createTodoInput() {
     const form = document.createElement('form')
@@ -26,12 +26,12 @@ function createAddButton() {
     button.id = 'new-todo-button'
     button.classList.add('todo__button')
     button.innerHTML = '+'
-    button.addEventListener("click", addNewTodo)
+    button.addEventListener("click", () => addNewTodo())
     return button
 }
 
 function addNewTodo() {
     const title = document.querySelector('#new-todo-title') as HTMLInputElement
-    appendTodoList(createTodo(title.value))
+    appendTodo(createTodo(title.value))
     title.value = ''
 }
