@@ -1,6 +1,6 @@
 import { Todo } from '../models/Todo'
 import { Project } from '../models/Project'
-import { renderTodoList } from '../components/TodoList'
+import { renderTodoList } from '../views/TodoList'
 
 let currentProject : Project
 
