@@ -1,7 +1,7 @@
 import { Project } from '../models/Project'
 import { Todo } from '../models/Todo'
 import { removeTodo } from '../controller/TodoController'
-import { createNewTodoDialog } from './TodoInput'
+import { createNewTodoDialog } from './NewTodoDialog'
 import { createNewButton } from './NewTodoButton'
 
 export function renderTodoList(project: Project) {
