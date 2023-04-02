@@ -1,5 +1,5 @@
 import { appendTodo } from '../controller/TodoController'
-import { createTodo } from '../models/Todo'
+import { Todo } from '../models/Todo'
 
 export function renderNewTodoDialog() {
     const dialog = document.createElement('dialog')
@@ -39,7 +39,7 @@ function submitTodo(dialog: HTMLDialogElement) {
         const title = titleInput.value
 
         if (title) {
-            appendTodo(createTodo(title, new Date(dateInput.value)))
+            appendTodo(new Todo(title, new Date(dateInput.value)))
         }
     }
 

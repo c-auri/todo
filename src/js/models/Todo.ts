@@ -1,15 +1,13 @@
 let numberOfTodos = 0
 
-export interface Todo {
+export class Todo {
     id: number
     title: string
     date: Date
-}
 
-export function createTodo(title : string, date: Date) {
-    return {
-        id: numberOfTodos++,
-        title: title,
-        date: date
+    constructor(title: string, date: Date) {
+        this.id = numberOfTodos++
+        this.title = title
+        this.date = date
     }
 }
