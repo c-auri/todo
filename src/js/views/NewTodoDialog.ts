@@ -18,6 +18,10 @@ function getDialogHtml() {
                     Title
                     <input type='text' class='new-todo__input' id='new-todo__title'></input>
                 </label>
+                <label class='new-todo__label'>
+                    Due Date
+                    <input type='date' class='new-todo__input' id='new-todo__date'></input>
+                </label>
             </div>
             <div class='new-todo__buttons'>
                 <button class="button">Cancel</button>
@@ -29,14 +33,16 @@ function getDialogHtml() {
 
 function submitTodo(dialog: HTMLDialogElement) {
     const titleInput = dialog.querySelector('#new-todo__title') as HTMLInputElement
+    const dateInput = dialog.querySelector('#new-todo__date') as HTMLInputElement
 
     if (dialog.returnValue === 'add') {
         const title = titleInput.value
 
         if (title) {
-            appendTodo(createTodo(title))
+            appendTodo(createTodo(title, new Date(dateInput.value)))
         }
     }
 
     titleInput.value = ''
+    dateInput.value = ''
 }

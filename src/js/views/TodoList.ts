@@ -30,6 +30,7 @@ function renderTodo(todo : Todo) {
 
     li.innerHTML = `
         <span class="todo__title">${todo.title}</span>
+        <span class="todo__date">${todo.date.toDateString()}</span>
         <button class="button button--todo-controls">x</button>
     `
 
