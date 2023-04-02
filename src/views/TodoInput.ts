@@ -1,37 +1,43 @@
 import './TodoInput.scss'
 
-import { createTodo } from '../models/Todo'
 import { appendTodo } from '../controller/TodoController'
+import { createTodo } from '../models/Todo'
 
 export function createTodoInput() {
-    const form = document.createElement('form')
-    form.classList.add('todo')
-    form.id = 'new-todo'
-    form.appendChild(createTitleInput())
-    form.appendChild(createAddButton())
-    return form
-}
+    const div = document.createElement('div')
+    const dialog = document.createElement('dialog')
 
-function createTitleInput() {
-    const input = document.createElement('input')
-    input.type = 'text'
-    input.id = 'new-todo-title'
-    input.placeholder = 'title'
-    return input
-}
+    dialog.innerHTML = `
+        <form method='dialog' class='new-todo__dialog'>
+            <label>
+                Title:
+                <input type='text' class='new-todo__input' id='new-todo__title'></input>
+            </label>
+            <div class='new-todo__buttons'>
+                <button value='cancel'>Cancel</button>
+                <button id='new-todo__confirm-btn' value=''>Confirm</button>
+            </div>
+        </form>
+    `
 
-function createAddButton() {
-    const button = document.createElement('button')
-    button.type = 'button'
-    button.id = 'new-todo-button'
-    button.classList.add('todo__button')
-    button.innerHTML = '+'
-    button.addEventListener("click", () => addNewTodo())
-    return button
-}
+    dialog.addEventListener('close', () => {
+        const titleInput = dialog.querySelector('#new-todo__title') as HTMLInputElement
+        const title = titleInput.value
 
-function addNewTodo() {
-    const title = document.querySelector('#new-todo-title') as HTMLInputElement
-    appendTodo(createTodo(title.value))
-    title.value = ''
+        if (title) {
+            appendTodo(createTodo(title))
+        }
+
+        titleInput.value = ''
+    })
+
+    const newButton = document.createElement('button')
+    newButton.id = 'new-todo__btn'
+    newButton.innerHTML = 'Add New Todo'
+    newButton.addEventListener('click', () => dialog.showModal())
+
+    div.appendChild(dialog)
+    div.appendChild(newButton)
+
+    return div
 }
