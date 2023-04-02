@@ -14,18 +14,21 @@ export function createTodoInput() {
                 </label>
             </div>
             <div class='new-todo__buttons'>
-                <button class="button" value='cancel'>Cancel</button>
-                <button class="button" id='new-todo__confirm-btn' value=''>Add</button>
+                <button class="button">Cancel</button>
+                <button class="button" id='new-todo__confirm-btn' value='add'>Add</button>
             </div>
         </form>
     `
 
     dialog.addEventListener('close', () => {
         const titleInput = dialog.querySelector('#new-todo__title') as HTMLInputElement
-        const title = titleInput.value
 
-        if (title) {
-            appendTodo(createTodo(title))
+        if (dialog.returnValue === 'add') {
+            const title = titleInput.value
+    
+            if (title) {
+                appendTodo(createTodo(title))
+            }
         }
 
         titleInput.value = ''
