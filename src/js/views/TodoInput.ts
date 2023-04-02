@@ -1,5 +1,3 @@
-import './TodoInput.scss'
-
 import { appendTodo } from '../controller/TodoController'
 import { createTodo } from '../models/Todo'
 

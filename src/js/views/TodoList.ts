@@ -1,5 +1,3 @@
-import './TodoList.scss'
-
 import { Project } from '../models/Project'
 import { Todo } from '../models/Todo'
 import { removeTodo } from '../controller/TodoController'
