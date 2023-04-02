@@ -4,15 +4,13 @@ import { removeTodo } from '../controller/TodoController'
 import { createNewTodoDialog } from './TodoInput'
 import { createNewButton } from './NewTodoButton'
 
-const todoListId = 'todo-list'
-
 export function renderTodoList(project: Project) {
     const main = document.querySelector('main')
     main.innerHTML = ''
 
     const todoList = document.createElement('ul')
     todoList.classList.toggle('todo-list')
-    todoList.id = todoListId
+    todoList.id = 'todo-list'
 
     for (const todo of project.todos) {
         todoList.appendChild(renderTodo(todo))
