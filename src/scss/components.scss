@@ -34,7 +34,8 @@ dialog {
     background-color: var(--clr-medium-gray);
     color: var(--clr-almost-white);
 
-    &__title {
+    &__title,
+    &__date {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -61,6 +62,12 @@ dialog {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    &__heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--clr-almost-black);
+    }
 
     &__inputs {
         display: flex;

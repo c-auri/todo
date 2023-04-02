@@ -1,3 +1,5 @@
+import { isValid, formatISO } from 'date-fns'
+
 let numberOfTodos = 0
 
 export class Todo {
@@ -9,5 +11,9 @@ export class Todo {
         this.id = numberOfTodos++
         this.title = title
         this.date = date
+    }
+
+    get dueDate() {
+        return isValid(this.date) ? formatISO(this.date, { representation: 'date' }) : ''
     }
 }
