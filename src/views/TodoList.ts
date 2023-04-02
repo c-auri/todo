@@ -34,6 +34,7 @@ function renderTodo(todo : Todo) {
 
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('button')
+    deleteButton.classList.add('button--todo-controls')
     deleteButton.innerHTML = "x"
     deleteButton.addEventListener('click', () => removeTodo(todo))
 
