@@ -33,7 +33,7 @@ function renderTodo(todo : Todo) {
     title.innerHTML = todo.title
 
     const deleteButton = document.createElement('button')
-    deleteButton.classList.add('todo__button')
+    deleteButton.classList.add('button')
     deleteButton.innerHTML = "x"
     deleteButton.addEventListener('click', () => removeTodo(todo))
 

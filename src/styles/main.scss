@@ -1,5 +1,6 @@
 @use "./abstracts" as *;
 @use "./resets";
+@use "./components.scss";
 
 body {
     min-height: 100vh;

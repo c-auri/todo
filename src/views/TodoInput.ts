@@ -14,8 +14,8 @@ export function createTodoInput() {
                 <input type='text' class='new-todo__input' id='new-todo__title'></input>
             </label>
             <div class='new-todo__buttons'>
-                <button value='cancel'>Cancel</button>
-                <button id='new-todo__confirm-btn' value=''>Confirm</button>
+                <button class="button" value='cancel'>Cancel</button>
+                <button class="button" id='new-todo__confirm-btn' value=''>Confirm</button>
             </div>
         </form>
     `
@@ -33,6 +33,7 @@ export function createTodoInput() {
 
     const newButton = document.createElement('button')
     newButton.id = 'new-todo__btn'
+    newButton.classList.add('button')
     newButton.innerHTML = 'Add New Todo'
     newButton.addEventListener('click', () => dialog.showModal())
 
