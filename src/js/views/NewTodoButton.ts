@@ -1,4 +1,4 @@
-export function createNewButton(dialog: HTMLDialogElement) {
+export function renderNewButton(dialog: HTMLDialogElement) {
     const newButton = document.createElement('button')
 
     newButton.id = 'new-todo__btn'

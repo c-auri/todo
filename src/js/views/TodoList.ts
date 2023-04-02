@@ -1,8 +1,8 @@
 import { Project } from '../models/Project'
 import { Todo } from '../models/Todo'
 import { removeTodo } from '../controller/TodoController'
-import { createNewTodoDialog } from './NewTodoDialog'
-import { createNewButton } from './NewTodoButton'
+import { renderNewTodoDialog } from './NewTodoDialog'
+import { renderNewButton } from './NewTodoButton'
 
 export function renderTodoList(project: Project) {
     const main = document.querySelector('main')
@@ -16,11 +16,11 @@ export function renderTodoList(project: Project) {
         todoList.appendChild(renderTodo(todo))
     }
 
-    const dialog = createNewTodoDialog()
+    const dialog = renderNewTodoDialog()
 
     main.appendChild(todoList)
     main.appendChild(dialog)
-    main.appendChild(createNewButton(dialog))
+    main.appendChild(renderNewButton(dialog))
 }
 
 function renderTodo(todo : Todo) {

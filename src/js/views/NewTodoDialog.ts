@@ -1,7 +1,7 @@
 import { appendTodo } from '../controller/TodoController'
 import { createTodo } from '../models/Todo'
 
-export function createNewTodoDialog() {
+export function renderNewTodoDialog() {
     const dialog = document.createElement('dialog')
 
     dialog.innerHTML = getDialogHtml()
