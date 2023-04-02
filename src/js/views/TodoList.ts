@@ -31,7 +31,9 @@ function renderTodo(todo : Todo) {
     li.innerHTML = `
         <span class="todo__title">${todo.title}</span>
         <span class="todo__date">${todo.date.toDateString()}</span>
-        <button class="button button--todo-controls">x</button>
+        <div class="todo__button-container">
+            <button class="button todo__button">x</button>
+        </div>
     `
 
     const deleteButton = li.querySelector('button')
