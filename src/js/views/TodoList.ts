@@ -28,17 +28,13 @@ function renderTodo(todo : Todo) {
     li.classList.add('todo')
     li.setAttribute('data-id', ""+todo.id)
 
-    const title = document.createElement('span')
-    title.classList.add('todo__title')
-    title.innerHTML = todo.title
+    li.innerHTML = `
+        <span class="todo__title">${todo.title}</span>
+        <button class="button button--todo-controls">x</button>
+    `
 
-    const deleteButton = document.createElement('button')
-    deleteButton.classList.add('button')
-    deleteButton.classList.add('button--todo-controls')
-    deleteButton.innerHTML = "x"
+    const deleteButton = li.querySelector('button')
     deleteButton.addEventListener('click', () => removeTodo(todo))
 
-    li.appendChild(title)
-    li.appendChild(deleteButton)
     return li
 }
