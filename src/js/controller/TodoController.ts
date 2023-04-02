@@ -13,7 +13,7 @@ export function initialize() {
  * Appends Todo to the current project.
  * @param todo The Todo to append.
  */
-export function appendTodo(todo: Todo) {
+export function append(todo: Todo) {
     currentProject.add(todo)
     renderTodoList(currentProject)
 }
@@ -22,7 +22,7 @@ export function appendTodo(todo: Todo) {
  * Removes Todo from the current project.
  * @param todo The Todo to remove.
  */
-export function removeTodo(todo: Todo) {
+export function remove(todo: Todo) {
     currentProject.remove(todo)
     renderTodoList(currentProject)
 }

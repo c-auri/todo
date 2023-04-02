@@ -1,6 +1,6 @@
 import { Project } from '../models/Project'
 import { Todo } from '../models/Todo'
-import { removeTodo } from '../controller/TodoController'
+import { remove } from '../controller/TodoController'
 import { renderNewTodoDialog } from './NewTodoDialog'
 import { renderNewButton } from './NewTodoButton'
 
@@ -35,7 +35,7 @@ function renderTodo(todo : Todo) {
     `
 
     const deleteButton = li.querySelector('button')
-    deleteButton.addEventListener('click', () => removeTodo(todo))
+    deleteButton.addEventListener('click', () => remove(todo))
 
     return li
 }
