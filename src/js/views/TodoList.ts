@@ -1,7 +1,8 @@
 import { Project } from '../models/Project'
 import { Todo } from '../models/Todo'
 import { removeTodo } from '../controller/TodoController'
-import { createTodoInput } from './TodoInput'
+import { createNewTodoDialog } from './TodoInput'
+import { createNewButton } from './NewTodoButton'
 
 const todoListId = 'todo-list'
 
@@ -17,8 +18,11 @@ export function renderTodoList(project: Project) {
         todoList.appendChild(renderTodo(todo))
     }
 
+    const dialog = createNewTodoDialog()
+
     main.appendChild(todoList)
-    main.appendChild(createTodoInput())
+    main.appendChild(dialog)
+    main.appendChild(createNewButton(dialog))
 }
 
 function renderTodo(todo : Todo) {

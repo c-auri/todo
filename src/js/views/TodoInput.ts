@@ -1,19 +1,7 @@
 import { appendTodo } from '../controller/TodoController'
 import { createTodo } from '../models/Todo'
 
-export function createTodoInput() {
-    const div = document.createElement('div')
-
-    const dialog = createDialog()
-    const newButton = createNewButton(dialog)
-
-    div.appendChild(dialog)
-    div.appendChild(newButton)
-
-    return div
-}
-
-function createDialog() {
+export function createNewTodoDialog() {
     const dialog = document.createElement('dialog')
 
     dialog.innerHTML = getDialogHtml()
@@ -51,16 +39,4 @@ function submitTodo(dialog: HTMLDialogElement) {
     }
 
     titleInput.value = ''
-}
-
-function createNewButton(dialog: HTMLDialogElement) {
-    const newButton = document.createElement('button')
-
-    newButton.id = 'new-todo__btn'
-    newButton.classList.add('button')
-    newButton.classList.add('button--new')
-    newButton.innerHTML = 'Add New Todo'
-    newButton.addEventListener('click', () => dialog.showModal())
-
-    return newButton
 }
