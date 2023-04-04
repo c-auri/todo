@@ -1,6 +1,7 @@
 @use "./abstracts" as *;
 @use "./resets";
 @use "./components.scss";
+@import "bootstrap/scss/bootstrap";
 
 body {
     min-height: 100vh;

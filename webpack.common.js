@@ -31,10 +31,15 @@ module.exports = {
       {
         test: /\.(scss|css)$/,
         use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'style-loader'
-            : MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
+          {
+            // Loader for webpack to process CSS with PostCSS
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: { plugins: () => [ autoprefixer ] }
+            }
+          },
           {
             loader: 'sass-loader',
             options: {
