@@ -7,8 +7,7 @@ export function renderTodoList(project: Project) {
     const main = document.querySelector('main')
     main.innerHTML = ''
 
-    const todoList = document.createElement('ul')
-    todoList.classList.toggle('todo-list')
+    const todoList = document.createElement('div')
     todoList.id = 'todo-list'
 
     for (const todo of project.todos) {

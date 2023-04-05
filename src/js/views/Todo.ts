@@ -2,20 +2,20 @@ import { Todo } from '../models/Todo'
 import { remove } from '../controller/TodoController'
 
 export function renderTodo(todo : Todo) {
-    const li = document.createElement('li')
-    li.classList.add('todo')
-    li.setAttribute('data-id', ""+todo.id)
+    const todoDiv = document.createElement('div')
+    todoDiv.classList.add('row', 'row-cols-3', 'gx-2', 'mb-3', 'rounded', 'border', 'border-primary')
+    todoDiv.setAttribute('data-id', ""+todo.id)
 
-    li.innerHTML = `
-        <span class="todo__title">${todo.title}</span>
-        <span class="todo__date">${todo.dueDate}</span>
-        <div class="todo__button-container">
-            <button class="button todo__button">x</button>
-        </div>
+    todoDiv.innerHTML = `
+        <span class="col">${todo.title}</span>
+        <span class="col">${todo.dueDate}</span>
+        <span class="col">
+            <button class="btn btn-light">x</button>
+        </span>
     `
 
-    const deleteButton = li.querySelector('button')
+    const deleteButton = todoDiv.querySelector('button')
     deleteButton.addEventListener('click', () => remove(todo))
 
-    return li
+    return todoDiv
 }

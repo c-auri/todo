@@ -3,6 +3,7 @@ import { Todo } from '../models/Todo'
 
 export function renderNewTodoDialog() {
     const dialog = document.createElement('dialog')
+    dialog.classList.add('border', 'rounded-4')
 
     dialog.innerHTML = getDialogHtml()
     dialog.addEventListener('close', () => submitTodo(dialog))
@@ -12,20 +13,20 @@ export function renderNewTodoDialog() {
 
 function getDialogHtml() {
     return `
-        <form method='dialog' class='new-todo'>
-            <div class='new-todo__inputs'>
-                <label class='new-todo__label'>
+        <form method="dialog" class="container">
+            <div class="mb-3 row">
+                <label class="form-label">
                     Title
-                    <input type='text' class='new-todo__input' id='new-todo__title'></input>
+                    <input type="text" class="form-control" id="new-todo__title"></input>
                 </label>
-                <label class='new-todo__label'>
+                <label class="form-label">
                     Due Date
-                    <input type='date' class='new-todo__input' id='new-todo__date'></input>
+                    <input type="date" class="form-control" id="new-todo__date"></input>
                 </label>
             </div>
-            <div class='new-todo__buttons'>
-                <button class="button">Cancel</button>
-                <button class="button" id='new-todo__confirm-btn' value='add'>Add</button>
+            <div class="mb-3">
+                <button class="btn btn-primary" id="new-todo__confirm-btn" value="add">Add Todo</button>
+                <button class="btn btn-outline-secondary">Cancel</button>
             </div>
         </form>
     `
