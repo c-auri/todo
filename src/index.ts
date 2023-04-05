@@ -1,4 +1,4 @@
 import './styles.scss'
-import { initialize } from './js/controller/TodoController'
+import { initialize } from './ts/Controller'
 
 initialize()
