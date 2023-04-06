@@ -35,6 +35,10 @@ export class Project {
         return this.#tasks
     }
 
+    get isEmpty() {
+        return this.#tasks.length === 0
+    }
+
     add(task: Task) {
         this.#tasks.push(task)
     }

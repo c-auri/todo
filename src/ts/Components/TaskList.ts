@@ -5,27 +5,38 @@ import { renderNewButton } from './NewTaskButton'
 
 export function renderTaskList(project: Project) {
     const main = document.querySelector('main')
-    main.innerHTML = ''
-
-    const taskList = document.createElement('div')
-
-    for (const todo of project.tasks) {
-        taskList.appendChild(renderTask(todo))
-    }
-
+    
+    const list = renderList(project)
     const dialog = renderNewTaskDialog()
-
-    main.appendChild(taskList)
+    const newButton = renderNewButton(dialog)
+    
+    main.innerHTML = ''
+    main.appendChild(list)
     main.appendChild(dialog)
-    main.appendChild(renderNewButton(dialog))
+    main.appendChild(newButton)
 }
 
-function renderTask(task : Task) {
-    const taskDiv = document.createElement('div')
-    taskDiv.classList.add('row', 'row-cols-3', 'gx-2', 'mb-3', 'rounded', 'border', 'border-primary')
-    taskDiv.setAttribute('data-id', ""+task.id)
+function renderList(project: Project) {
+    const ul = document.createElement('ul')
+    ul.classList.add('mb-3', 'list-group', 'list-group-flush')
 
-    taskDiv.innerHTML = `
+    if (!project.isEmpty) {
+        ul.classList.add('border-top', 'border-bottom')
+    }
+
+    for (const todo of project.tasks) {
+        ul.appendChild(renderItem(todo))
+    }
+
+    return ul
+}
+
+function renderItem(task : Task) {
+    const li = document.createElement('li')
+    li.classList.add('list-group-item')
+    li.setAttribute('data-id', ""+task.id)
+
+    li.innerHTML = `
         <span class="col">${task.title}</span>
         <span class="col">${task.dueDate}</span>
         <span class="col">
@@ -33,8 +44,8 @@ function renderTask(task : Task) {
         </span>
     `
 
-    const deleteButton = taskDiv.querySelector('button')
+    const deleteButton = li.querySelector('button')
     deleteButton.addEventListener('click', () => remove(task))
 
-    return taskDiv
+    return li
 }
