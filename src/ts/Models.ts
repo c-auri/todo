@@ -5,10 +5,18 @@ export class Task {
     title: string
     date: Date
 
-    constructor(title: string, date: Date) {
-        this.id = numberOfTasks++
+    constructor(title: string, date: Date, id: number = undefined) {
+        this.id = typeof id === 'undefined' ? ++numberOfTasks : id
         this.title = title
         this.date = date
+    }
+
+    toJSON() {
+        return { 
+            id: this.id, 
+            title: this.title, 
+            date: this.date 
+        }
     }
 }
 
@@ -16,9 +24,9 @@ export class Project {
     #title: string
     #tasks: Task[]
 
-    constructor(title: string) {
+    constructor(title: string, tasks: Task[] = []) {
         this.#title = title
-        this.#tasks = []
+        this.#tasks = tasks
     }
 
     get title() {
@@ -45,5 +53,19 @@ export class Project {
         }
 
         this.#tasks.splice(index, 1)
+    }
+
+    toJSON() {
+        return {
+            title: this.#title,
+            tasks: this.#tasks
+        }
+    }
+
+    static fromJSON(json: string) {
+        const plainProject = JSON.parse(json)
+        const plainTasks = plainProject.tasks as Task[]
+        const tasks = Array.from(plainTasks, task => new Task(task.title, task.date, task.id))
+        return new Project(plainProject.title, tasks)
     }
 }
