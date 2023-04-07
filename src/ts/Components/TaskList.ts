@@ -1,7 +1,6 @@
 import { Task, Project } from '../Models'
 import { remove } from '../Controller'
-import { renderNewTaskDialog } from './NewTaskDialog'
-import { renderNewButton } from './NewTaskButton'
+import { renderNewButton, renderNewTaskDialog } from './NewTask'
 
 export function renderTaskList(project: Project) {
     const main = document.querySelector('main')
