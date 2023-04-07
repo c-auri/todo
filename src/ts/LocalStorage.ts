@@ -2,7 +2,7 @@ import { Project } from "./Models"
 
 export class LocalStorage {
     constructor() {
-        if (!this.#isPopulated) {
+        if (!this.#isPopulated()) {
             this.#populate()
         }
     }
