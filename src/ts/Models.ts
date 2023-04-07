@@ -1,5 +1,3 @@
-import { isValid, formatISO } from 'date-fns'
-
 let numberOfTasks = 0
 
 export class Task {
@@ -11,10 +9,6 @@ export class Task {
         this.id = numberOfTasks++
         this.title = title
         this.date = date
-    }
-
-    get dueDate() {
-        return isValid(this.date) ? formatISO(this.date, { representation: 'date' }) : ''
     }
 }
 

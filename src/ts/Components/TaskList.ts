@@ -37,7 +37,7 @@ function renderItem(task : Task) {
 
     li.innerHTML = `
         <span class="col">${task.title}</span>
-        <span class="col">${task.dueDate}</span>
+        <span class="col">${task.date}</span>
         <span class="col">
             <button class="btn btn-light">x</button>
         </span>
