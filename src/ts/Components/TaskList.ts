@@ -45,7 +45,7 @@ function renderItem(task : Task) {
     `
 
     const deleteButton = li.querySelector('button')
-    deleteButton.addEventListener('click', () => remove(task))
+    deleteButton.addEventListener('click', () => remove(task.id))
 
     return li
 }

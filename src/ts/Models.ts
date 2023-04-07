@@ -43,8 +43,8 @@ export class Project {
         this.#tasks.push(task)
     }
 
-    remove(task: Task) {
-        const index = this.#tasks.indexOf(task)
+    remove(id: number) {
+        const index = this.#tasks.findIndex(task => task.id === id)
 
         if (index === -1) {
             throw Error('Trying to delete a Task that does not exist in this project.')
