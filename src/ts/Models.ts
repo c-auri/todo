@@ -47,7 +47,7 @@ export class Project {
         const index = this.#tasks.indexOf(task)
 
         if (index === -1) {
-            throw Error('Trying to delete a Todo that does not exist in this project.')
+            throw Error('Trying to delete a Task that does not exist in this project.')
         }
 
         this.#tasks.splice(index, 1)
