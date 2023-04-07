@@ -4,11 +4,11 @@ import { renderNewButton, renderNewTaskDialog } from './NewTask'
 
 export function renderTaskList(project: Project) {
     const main = document.querySelector('main')
-    
+
     const list = renderList(project)
     const dialog = renderNewTaskDialog()
     const newButton = renderNewButton(dialog)
-    
+
     main.innerHTML = ''
     main.appendChild(list)
     main.appendChild(dialog)
