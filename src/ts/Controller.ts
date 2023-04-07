@@ -1,11 +1,12 @@
-import { Task, Project } from './Models'
+import { Task } from './Models'
 import { renderTaskList } from './components/TaskList'
+import { LocalStorage } from './LocalStorage'
 
-let currentProject : Project
+let storage: LocalStorage
 
 export function initialize() {
-    currentProject = new Project("Inbox")
-    renderTaskList(currentProject)
+    storage = new LocalStorage()
+    renderTaskList(storage.getProject())
 }
 
 /**
@@ -13,8 +14,10 @@ export function initialize() {
  * @param task The Todo to append.
  */
 export function append(task: Task) {
+    const currentProject = storage.getProject()
     currentProject.add(task)
     renderTaskList(currentProject)
+    storage.setProject(currentProject)
 }
 
 /**
@@ -22,6 +25,8 @@ export function append(task: Task) {
  * @param task The Todo to remove.
  */
 export function remove(id: number) {
+    const currentProject = storage.getProject()
     currentProject.remove(id)
     renderTaskList(currentProject)
+    storage.setProject(currentProject)
 }
