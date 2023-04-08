@@ -1,5 +1,6 @@
 import { append } from '../Controller'
 import Task from '../model/Task'
+import DialogHtml from './NewTaskDialog.html'
 
 export function renderNewButton(dialog: HTMLDialogElement) {
     const newButton = document.createElement('button')
@@ -17,31 +18,10 @@ export function renderNewTaskDialog() {
     const dialog = document.createElement('dialog')
 
     dialog.classList.add('border', 'rounded-4')
-    dialog.innerHTML = getDialogHtml()
+    dialog.innerHTML = DialogHtml
     dialog.addEventListener('close', () => submitTask(dialog))
 
     return dialog
-}
-
-function getDialogHtml() {
-    return `
-        <form method="dialog" class="container">
-            <div class="mb-3 row">
-                <label class="form-label">
-                    Title
-                    <input type="text" class="form-control" id="new-task__title"></input>
-                </label>
-                <label class="form-label">
-                    Due Date
-                    <input type="date" class="form-control" id="new-task__date"></input>
-                </label>
-            </div>
-            <div class="mb-3">
-                <button class="btn btn-primary" id="new-task__confirm-btn" value="add">Add task</button>
-                <button class="btn btn-outline-secondary">Cancel</button>
-            </div>
-        </form>
-    `
 }
 
 function submitTask(dialog: HTMLDialogElement) {

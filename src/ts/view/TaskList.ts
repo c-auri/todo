@@ -3,6 +3,7 @@ import Project from '../model/Project'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
 import { isValid, formatISO } from 'date-fns'
+import TaskHtml from './Task.html'
 
 export function renderTaskList(project: Project) {
     const main = document.querySelector('main')
@@ -37,16 +38,10 @@ function renderItem(task : Task) {
     li.classList.add('list-group-item')
     li.setAttribute('data-id', ""+task.id)
 
-    li.innerHTML = `
-        <span class="col">${task.title}</span>
-        <span class="col">${renderDate(task.date)}</span>
-        <span class="col">
-            <button class="btn btn-light">x</button>
-        </span>
-    `
-
-    const deleteButton = li.querySelector('button')
-    deleteButton.addEventListener('click', () => remove(task.id))
+    li.innerHTML = TaskHtml
+    li.querySelector('#task__title').textContent = task.title
+    li.querySelector('#task__date').textContent = renderDate(task.date)
+    li.querySelector('button').addEventListener('click', () => remove(task.id))
 
     return li
 }
