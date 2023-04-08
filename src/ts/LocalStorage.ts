@@ -7,15 +7,6 @@ export class LocalStorage {
         }
     }
 
-    #isPopulated() {
-        return !!localStorage.getItem('currentProject')
-    }
-
-    #populate() {
-        const inbox =  new Project('Inbox')
-        localStorage.setItem('currentProject', JSON.stringify(inbox))
-    }
-
     getProject() {
         const json = localStorage.getItem('currentProject')
         return Project.fromJSON(json)
@@ -23,5 +14,14 @@ export class LocalStorage {
 
     setProject(project: Project) {
         localStorage.setItem('currentProject', JSON.stringify(project))
+    }
+
+    #isPopulated() {
+        return !!localStorage.getItem('currentProject')
+    }
+
+    #populate() {
+        const inbox =  new Project('Inbox')
+        localStorage.setItem('currentProject', JSON.stringify(inbox))
     }
 }
