@@ -1,6 +1,7 @@
 import { Task, Project } from '../Models'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
+import { isValid, formatISO } from 'date-fns'
 
 export function renderTaskList(project: Project) {
     const main = document.querySelector('main')
@@ -37,7 +38,7 @@ function renderItem(task : Task) {
 
     li.innerHTML = `
         <span class="col">${task.title}</span>
-        <span class="col">${task.date}</span>
+        <span class="col">${renderDate(task.date)}</span>
         <span class="col">
             <button class="btn btn-light">x</button>
         </span>
@@ -47,4 +48,8 @@ function renderItem(task : Task) {
     deleteButton.addEventListener('click', () => remove(task.id))
 
     return li
+}
+
+function renderDate(date: Date) {
+    return isValid(date) ? formatISO(date) : ""
 }
