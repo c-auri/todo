@@ -1,6 +1,6 @@
-import { Task } from './Models'
-import { renderTaskList } from './components/TaskList'
-import { LocalStorage } from './LocalStorage'
+import Task from './model/Task'
+import { renderTaskList } from './view/TaskList'
+import { LocalStorage } from './model/LocalStorage'
 
 let storage: LocalStorage
 

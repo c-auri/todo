@@ -1,4 +1,4 @@
-import { Project } from "./Models"
+import Project from "./Project"
 
 export class LocalStorage {
     constructor() {

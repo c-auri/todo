@@ -1,5 +1,5 @@
 import { append } from '../Controller'
-import { Task } from '../Models'
+import Task from '../model/Task'
 
 export function renderNewButton(dialog: HTMLDialogElement) {
     const newButton = document.createElement('button')

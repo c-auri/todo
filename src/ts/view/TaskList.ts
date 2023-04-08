@@ -1,4 +1,5 @@
-import { Task, Project } from '../Models'
+import Task from '../model/Task'
+import Project from '../model/Project'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
 import { isValid, formatISO } from 'date-fns'
