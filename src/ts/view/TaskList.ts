@@ -2,7 +2,6 @@ import Task from '../model/Task'
 import Project from '../model/Project'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
-import { isValid, formatISO } from 'date-fns'
 import TaskHtml from './Task.html'
 
 export function renderTaskList(project: Project) {
@@ -40,7 +39,7 @@ function renderItem(task : Task) {
 
     li.innerHTML = TaskHtml
     li.querySelector('#task__title').textContent = task.title
-    li.querySelector('#task__date').textContent = isValid(task.date) ? formatISO(task.date, { representation: 'date' }) : ''
+    li.querySelector('#task__date').textContent = task.dateString
     li.querySelector('button').addEventListener('click', () => remove(task.id))
 
     return li

@@ -30,6 +30,7 @@ describe('Task.fromJSON', () => {
         const originalDate = new Date()
         const originalTask = new Task(originalTitle, originalDate)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
+        expect(deserializedTask).toBeInstanceOf(Task)
         expect(deserializedTask).toEqual(originalTask)
     })
 })

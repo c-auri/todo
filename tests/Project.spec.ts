@@ -18,6 +18,7 @@ describe('Project.fromJSON', () => {
     test('deserializes project correctly', () => {
         const originalProject = new Project('TestProject', [ new Task('TestTask', new Date()) ])
         const deserializedProject = Project.fromJSON(JSON.stringify(originalProject))
+        expect(deserializedProject).toBeInstanceOf(Project)
         expect(deserializedProject).toEqual(originalProject)
     })
 })

@@ -1,4 +1,4 @@
-import { parseJSON } from "date-fns"
+import { isValid, formatISO, parseJSON } from 'date-fns'
 
 let numberOfTasks = 0
 
@@ -11,6 +11,10 @@ export default class Task {
         this.id = typeof id === 'undefined' ? ++numberOfTasks : id
         this.title = title
         this.date = date
+    }
+
+    get dateString() {
+        return isValid(this.date) ? formatISO(this.date, { representation: 'date' }) : ''
     }
 
     toJSON() {
@@ -27,6 +31,9 @@ export default class Task {
 
     static #revive(key: string, value: unknown) {
         switch (key) {
+            case '':
+                const obj = value as { id: number, title: string, date: Date }
+                return new Task(obj.title, obj.date, obj.id)
             case 'date':
                 return parseJSON(value as string)
             default:
