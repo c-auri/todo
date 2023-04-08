@@ -28,12 +28,14 @@ export function renderNewTaskDialog() {
 function submitTask(dialog: HTMLDialogElement) {
     const titleInput = dialog.querySelector('#new-task__title') as HTMLInputElement
     const dateInput = dialog.querySelector('#new-task__date') as HTMLInputElement
+    const descriptionInput = dialog.querySelector('#new-task__description') as HTMLTextAreaElement
 
     if (dialog.returnValue === 'add') {
         const title = titleInput.value
+        const description = descriptionInput.value
 
         if (title) {
-            append(new Task(title, new Date(dateInput.value)))
+            append(new Task(title, description, new Date(dateInput.value)))
         }
     }
 

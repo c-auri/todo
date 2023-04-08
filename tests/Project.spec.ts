@@ -9,14 +9,15 @@ describe('Project.fromJSON', () => {
         expect(deserializedProject.title).toBe(originalTitle)
     })
     test('deserializes tasks correctly', () => {
-        const originalTask1 = new Task('TestTask1', new Date())
-        const originalTask2 = new Task('TestTask1', new Date())
+        const originalTask1 = new Task('TestTask1', "TestDescription1", new Date())
+        const originalTask2 = new Task('TestTask1', "TestDescription1", new Date())
         const originalProject = new Project('TestProject', [ originalTask1, originalTask2 ])
         const deserializedProject = Project.fromJSON(JSON.stringify(originalProject))
         expect(deserializedProject.tasks).toEqual([ originalTask1, originalTask2 ])
     })
     test('deserializes project correctly', () => {
-        const originalProject = new Project('TestProject', [ new Task('TestTask', new Date()) ])
+        const originalTasks = [ new Task('TestTask', "TestDescription1", new Date()) ]
+        const originalProject = new Project('TestProject', originalTasks)
         const deserializedProject = Project.fromJSON(JSON.stringify(originalProject))
         expect(deserializedProject).toBeInstanceOf(Project)
         expect(deserializedProject).toEqual(originalProject)

@@ -40,6 +40,7 @@ function renderItem(task : Task) {
     li.innerHTML = TaskHtml
     li.querySelector('#task__title').textContent = task.title
     li.querySelector('#task__date').textContent = task.dateString
+    li.querySelector('#task__description').textContent = task.description
     li.querySelector('button').addEventListener('click', () => remove(task.id))
 
     return li
