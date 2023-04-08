@@ -40,12 +40,8 @@ function renderItem(task : Task) {
 
     li.innerHTML = TaskHtml
     li.querySelector('#task__title').textContent = task.title
-    li.querySelector('#task__date').textContent = renderDate(task.date)
+    li.querySelector('#task__date').textContent = isValid(task.date) ? formatISO(task.date, { representation: 'date' }) : ''
     li.querySelector('button').addEventListener('click', () => remove(task.id))
 
     return li
-}
-
-function renderDate(date: Date) {
-    return isValid(date) ? formatISO(date) : ""
 }
