@@ -19,6 +19,7 @@ export function renderNewTaskDialog() {
 
     dialog.classList.add('border', 'rounded-4')
     dialog.innerHTML = DialogHtml
+    dialog.style.width = 'min(100vw, 28rem)'
     dialog.addEventListener('close', () => submitTask(dialog))
 
     return dialog
