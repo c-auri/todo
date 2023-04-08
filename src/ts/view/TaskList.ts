@@ -19,7 +19,7 @@ export function renderTaskList(project: Project) {
 
 function renderList(project: Project) {
     const ul = document.createElement('ul')
-    ul.classList.add('mb-3', 'list-group', 'list-group-flush')
+    ul.classList.add('mb-4', 'list-group', 'list-group-flush')
 
     if (!project.isEmpty) {
         ul.classList.add('border-top', 'border-bottom')
