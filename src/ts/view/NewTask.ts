@@ -1,6 +1,7 @@
 import DialogHtml from './NewTaskDialog.html'
 import { Task } from '../model/Task'
 import { append } from '../Controller'
+import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 
 export function renderNewButton(dialog: HTMLDialogElement) {
@@ -35,14 +36,24 @@ function submitTask(dialog: HTMLDialogElement) {
     if (dialog.returnValue === 'add') {
         const title = titleInput.value
         const description = descriptionInput.value
-        const date = dateInput.value
-        const time = timeInput.value
+        const date = getDate(dateInput.value, timeInput.value)
 
         if (title) {
-            append(new Task(uuid(), title, description, new Date(date), time))
+            append(new Task(uuid(), title, description, new Date(date), !!timeInput.value))
         }
     }
 
     titleInput.value = ''
     dateInput.value = ''
+}
+
+function getDate(dateString: string, time: string) {
+    let date = new Date(dateString)
+
+    if (!!time) {
+        const [ hours, minutes ] = time.split(':').map(token => +token)
+        date = set(date, { hours, minutes })
+    }
+
+    return date
 }

@@ -1,11 +1,11 @@
-import { parseJSON, set } from 'date-fns'
+import { parseJSON } from 'date-fns'
 
 interface TaskData {
     id: string
     title: string
     description: string
     date: Date
-    time: string
+    hasTime: boolean
 }
 
 export class Task {
@@ -13,26 +13,19 @@ export class Task {
     title: string
     description: string
     date: Date
-    time: string
+    hasTime: boolean
 
     constructor(
             id: string,
             title: string,
             description: string,
             date: Date,
-            time: string) {
+            hasTime: boolean) {
         this.id = id
         this.title = title
         this.description = description
-
-        if (time) {
-            const [ hours, minutes ] = time.split(':').map(token => +token)
-            this.date = set(date, { hours, minutes })
-        } else {
-            this.date = date
-        }
-
-        this.time = time
+        this.date = date
+        this.hasTime = hasTime
     }
 
     toJSON() {
@@ -41,12 +34,12 @@ export class Task {
             title: this.title,
             description: this.description,
             date: this.date.toJSON(),
-            time: this.time
+            hasTime: this.hasTime
         }
     }
 
     static fromData(data: TaskData) {
-        return new Task(data.id, data.title, data.description, data.date, data.time)
+        return new Task(data.id, data.title, data.description, data.date, data.hasTime)
     }
 
     static fromJSON(json: string) {

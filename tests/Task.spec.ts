@@ -1,45 +1,42 @@
 import { Task } from "../src/ts/model/Task"
-import { isValid, set } from "date-fns"
+import { isValid } from "date-fns"
 
 describe('Task.fromJSON', () => {
     test('deserializes id correctly', () => {
-        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(), "12:00")
+        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(), true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
         expect(deserializedTask.id).toBe(originalTask.id)
     })
     test('deserializes title correctly', () => {
         const originalTitle = 'TestTask'
-        const originalTask = new Task('ID', originalTitle, 'TestDescription', new Date(), "12:00")
+        const originalTask = new Task('ID', originalTitle, 'TestDescription', new Date(), true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
         expect(deserializedTask.title).toBe(originalTitle)
     })
     test('deserializes description correctly', () => {
         const originalDescription = 'TestDescription'
-        const originalTask = new Task('ID', "TestTitle", originalDescription, new Date(), "12:00")
+        const originalTask = new Task('ID', "TestTitle", originalDescription, new Date(), true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
         expect(deserializedTask.description).toBe(originalDescription)
     })
     test('deserializes date correctly', () => {
-        const originalDate = new Date('2000-01-01')
-        const originalTime = '12:00'
-        const expectedDate = set(originalDate, { hours: 12 })
-        const originalTask = new Task('ID', 'TestTask', 'TestDescription', originalDate, originalTime)
+        const originalDate = new Date('2000-01-01T12:00:00.0Z')
+        const originalTask = new Task('ID', 'TestTask', 'TestDescription', originalDate, true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
-        expect(deserializedTask.date).toEqual(expectedDate)
+        expect(deserializedTask.date).toEqual(originalDate)
     })
-    test('deserializes time correctly', () => {
-        const originalTime = "12:00"
-        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(), originalTime)
+    test('deserializes hasTime correctly', () => {
+        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(), true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
-        expect(deserializedTask.time).toEqual(originalTime)
+        expect(deserializedTask.hasTime).toEqual(originalTask.hasTime)
     })
     test('deserializes invalid date correctly', () => {
-        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(''), "12:00")
+        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(''), true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
-        expect(isValid(deserializedTask.date)).toBe(false)
+        expect(isValid(deserializedTask.date)).toEqual(false)
     })
     test('deserializes task correctly', () => {
-        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(), "12:00")
+        const originalTask = new Task('ID', 'TestTask', 'TestDescription', new Date(), true)
         const deserializedTask = Task.fromJSON(JSON.stringify(originalTask))
         expect(deserializedTask).toBeInstanceOf(Task)
         expect(deserializedTask).toEqual(originalTask)

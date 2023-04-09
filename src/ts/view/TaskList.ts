@@ -48,15 +48,15 @@ function renderItem(task : Task) {
 }
 
 function printDate(task: Task) {
-    return isValid(task.date) ? task.date.toLocaleString([], dateOptions(task.time)) : ''
+    return isValid(task.date) ? task.date.toLocaleString([], dateOptions(task.hasTime)) : ''
 }
 
-function dateOptions(time: string): Intl.DateTimeFormatOptions {
+function dateOptions(hasTime: boolean): Intl.DateTimeFormatOptions {
     return {
         year: '2-digit',
         month: '2-digit',
         day: '2-digit',
-        hour: time ? '2-digit' : undefined,
-        minute: time ? '2-digit' : undefined
+        hour: hasTime ? '2-digit' : undefined,
+        minute: hasTime ? '2-digit' : undefined
     }
 }
