@@ -2,6 +2,14 @@ import { isValid, parseJSON, set } from 'date-fns'
 
 let numberOfTasks = 0
 
+interface TaskData {
+    id: number
+    title: string
+    description: string
+    date: Date
+    time: string
+}
+
 export default class Task {
     id: number
     title: string
@@ -48,6 +56,10 @@ export default class Task {
         }
     }
 
+    static fromData(data: TaskData) {
+        return new Task(data.title, data.description, data.date, data.time, data.id)
+    }
+
     static fromJSON(json: string) {
         return JSON.parse(json, this.#revive)
     }
@@ -55,14 +67,7 @@ export default class Task {
     static #revive(key: string, value: unknown) {
         switch (key) {
             case '':
-                const obj = value as { 
-                    id: number,
-                    title: string,
-                    description: string,
-                    date: Date,
-                    time: string,
-                }
-                return new Task(obj.title, obj.description, obj.date, obj.time, obj.id)
+                return Task.fromData(value as TaskData)
             case 'date':
                 return parseJSON(value as string)
             default:

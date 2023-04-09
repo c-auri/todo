@@ -1,5 +1,10 @@
 import Task from "./Task"
 
+interface ProjectData {
+    title: string
+    tasks: Task[]
+}
+
 export default class Project {
     #title: string
     #tasks: Task[]
@@ -42,6 +47,10 @@ export default class Project {
         }
     }
 
+    static fromData(data: ProjectData) {
+        return new Project(data.title, data.tasks)
+    }
+
     static fromJSON(json: string) {
         return JSON.parse(json, this.#revive)
     }
@@ -49,8 +58,7 @@ export default class Project {
     static #revive(key: string, value: unknown) {
         switch (key) {
             case '':
-                const obj = value as { title: string, tasks: Task[]}
-                return new Project(obj.title, obj.tasks)
+                return Project.fromData(value as ProjectData)
             case 'tasks':
                 return (value as unknown[]).map(obj => Task.fromJSON(JSON.stringify(obj)))
             default:
