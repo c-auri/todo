@@ -1,8 +1,9 @@
+import TaskHtml from './Task.html'
 import { Project } from '../model/Project'
 import { Task } from '../model/Task'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
-import TaskHtml from './Task.html'
+import { isValid } from 'date-fns'
 
 export function renderTaskList(project: Project) {
     const main = document.querySelector('main')
@@ -39,9 +40,23 @@ function renderItem(task : Task) {
 
     li.innerHTML = TaskHtml
     li.querySelector('#task__title').textContent = task.title
-    li.querySelector('#task__duedate').textContent = task.dueDateString
+    li.querySelector('#task__duedate').textContent = printDate(task)
     li.querySelector('#task__description').textContent = task.description
     li.querySelector('button').addEventListener('click', () => remove(task.id))
 
     return li
+}
+
+function printDate(task: Task) {
+    return isValid(task.date) ? task.date.toLocaleString([], dateOptions(task.time)) : ''
+}
+
+function dateOptions(time: string): Intl.DateTimeFormatOptions {
+    return {
+        year: '2-digit',
+        month: '2-digit',
+        day: '2-digit',
+        hour: time ? '2-digit' : undefined,
+        minute: time ? '2-digit' : undefined
+    }
 }

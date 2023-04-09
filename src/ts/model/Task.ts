@@ -1,4 +1,4 @@
-import { isValid, parseJSON, set } from 'date-fns'
+import { parseJSON, set } from 'date-fns'
 
 interface TaskData {
     id: string
@@ -33,20 +33,6 @@ export class Task {
         }
 
         this.time = time
-    }
-
-    get dueDateString() {
-        return isValid(this.date) ? this.date.toLocaleString([], this.#dateOptions) : ''
-    }
-
-    get #dateOptions(): Intl.DateTimeFormatOptions {
-        return {
-            year: '2-digit',
-            month: '2-digit',
-            day: '2-digit',
-            hour: this.time ? '2-digit' : undefined,
-            minute: this.time ? '2-digit' : undefined
-        }
     }
 
     toJSON() {
