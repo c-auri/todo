@@ -30,7 +30,7 @@ export default class Project {
         this.#tasks.push(task)
     }
 
-    remove(id: number) {
+    remove(id: string) {
         const index = this.#tasks.findIndex(task => task.id === id)
 
         if (index === -1) {

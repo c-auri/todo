@@ -1,9 +1,8 @@
 import { isValid, parseJSON, set } from 'date-fns'
-
-let numberOfTasks = 0
+import { v4 as uuid } from 'uuid'
 
 interface TaskData {
-    id: number
+    id: string
     title: string
     description: string
     date: Date
@@ -11,7 +10,7 @@ interface TaskData {
 }
 
 export default class Task {
-    id: number
+    id: string
     title: string
     description: string
     date: Date
@@ -22,8 +21,8 @@ export default class Task {
             description: string, 
             date: Date, 
             time: string, 
-            id: number = undefined) {
-        this.id = typeof id === 'undefined' ? ++numberOfTasks : id
+            id: string = undefined) {
+        this.id = typeof id === 'undefined' ? uuid() : id
         this.title = title
         this.description = description
 

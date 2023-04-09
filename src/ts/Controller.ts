@@ -24,7 +24,7 @@ export function append(task: Task) {
  * Removes task from the current project.
  * @param task The Todo to remove.
  */
-export function remove(id: number) {
+export function remove(id: string) {
     const currentProject = storage.getProject()
     currentProject.remove(id)
     renderTaskList(currentProject)
