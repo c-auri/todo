@@ -1,11 +1,11 @@
-import Task from "./Task"
+import { Task } from "./Task"
 
 interface ProjectData {
     title: string
     tasks: Task[]
 }
 
-export default class Project {
+export class Project {
     #title: string
     #tasks: Task[]
 

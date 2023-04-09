@@ -1,4 +1,4 @@
-import Task from "../src/ts/model/Task"
+import { Task } from "../src/ts/model/Task"
 import { isValid, set } from "date-fns"
 
 describe('Task.fromJSON', () => {

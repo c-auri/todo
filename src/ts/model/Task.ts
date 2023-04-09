@@ -8,7 +8,7 @@ interface TaskData {
     time: string
 }
 
-export default class Task {
+export class Task {
     id: string
     title: string
     description: string

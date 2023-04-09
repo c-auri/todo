@@ -1,5 +1,5 @@
-import Project from "../src/ts/model/Project"
-import Task from "../src/ts/model/Task"
+import { Project } from "../src/ts/model/Project"
+import { Task } from "../src/ts/model/Task"
 
 describe('Project.fromJSON', () => {
     test('deserializes title correctly', () => {

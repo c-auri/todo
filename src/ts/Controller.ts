@@ -1,4 +1,4 @@
-import Task from './model/Task'
+import { Task } from './model/Task'
 import { renderTaskList } from './view/TaskList'
 import { LocalStorage } from './model/LocalStorage'
 

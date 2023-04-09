@@ -1,5 +1,5 @@
-import Task from '../model/Task'
 import DialogHtml from './NewTaskDialog.html'
+import { Task } from '../model/Task'
 import { append } from '../Controller'
 import { v4 as uuid } from 'uuid'
 

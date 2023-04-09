@@ -1,5 +1,5 @@
-import Task from '../model/Task'
-import Project from '../model/Project'
+import { Project } from '../model/Project'
+import { Task } from '../model/Task'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
 import TaskHtml from './Task.html'
