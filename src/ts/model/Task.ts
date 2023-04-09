@@ -17,7 +17,12 @@ export default class Task {
     date: Date
     time: string
 
-    constructor(title: string, description: string, date: Date, time: string, id: number = undefined) {
+    constructor(
+            title: string, 
+            description: string, 
+            date: Date, 
+            time: string, 
+            id: number = undefined) {
         this.id = typeof id === 'undefined' ? ++numberOfTasks : id
         this.title = title
         this.description = description
