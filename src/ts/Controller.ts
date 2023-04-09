@@ -6,7 +6,7 @@ let storage: LocalStorage
 const currentProject = 'Inbox'
 
 export function initialize() {
-    storage = new LocalStorage()
+    storage = new LocalStorage([currentProject])
     renderCurrentProject()
 }
 
@@ -34,6 +34,7 @@ export function remove(id: string) {
 }
 
 function renderCurrentProject() {
+    const projects = storage.getProjects()
     const tasks = storage.getTasks(currentProject)
-    renderTasks(tasks)
+    renderTasks(tasks, projects)
 }

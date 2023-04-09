@@ -4,11 +4,11 @@ import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
 import { isValid } from 'date-fns'
 
-export function renderTasks(tasks: Task[]) {
+export function renderTasks(tasks: Task[], projects: string[]) {
     const main = document.querySelector('main')
 
     const list = renderList(tasks)
-    const dialog = renderNewTaskDialog()
+    const dialog = renderNewTaskDialog(projects)
     const newButton = renderNewButton(dialog)
 
     main.innerHTML = ''

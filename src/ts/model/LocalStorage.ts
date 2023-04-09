@@ -2,10 +2,15 @@ import { Task } from "./Task"
 import { deserialize, serialize } from "./Serialization"
 
 export class LocalStorage {
-    constructor() {
+    constructor(projects: string[]) {
         if (!this.#isPopulated()) {
-            this.#populate()
+            this.#populate(projects)
         }
+    }
+
+    getProjects() {
+        const json = localStorage.getItem('projects')
+        return JSON.parse(json)
     }
 
     getTasks(project = '') {
@@ -22,8 +27,8 @@ export class LocalStorage {
         return !!localStorage.getItem('tasks')
     }
 
-    #populate() {
+    #populate(projects: string[]) {
         localStorage.setItem('tasks', JSON.stringify([]))
-        localStorage.setItem('projects', 'Inbox')
+        localStorage.setItem('projects', JSON.stringify(projects))
     }
 } 

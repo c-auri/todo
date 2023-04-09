@@ -15,30 +15,44 @@ export function renderNewButton(dialog: HTMLDialogElement) {
     return newButton
 }
 
-export function renderNewTaskDialog() {
+export function renderNewTaskDialog(projects: string[]) {
     const dialog = document.createElement('dialog')
 
-    dialog.classList.add('border', 'rounded-4')
     dialog.innerHTML = DialogHtml
     dialog.style.width = 'min(100vw, 28rem)'
+    dialog.classList.add('border', 'rounded-4')
     dialog.addEventListener('close', () => submitTask(dialog))
+
+    const projectSelection = dialog.querySelector('#new-task__project') as HTMLSelectElement
+    addProjects(projectSelection, projects)
 
     return dialog
 }
 
+function addProjects(select: HTMLSelectElement, projects: string[]) {
+    for (const project of projects) {
+        const option = document.createElement('option')
+        option.value = project
+        option.textContent = project
+        select.appendChild(option)
+    }
+}
+
 function submitTask(dialog: HTMLDialogElement) {
     const titleInput = dialog.querySelector('#new-task__title') as HTMLInputElement
+    const projectInput = dialog.querySelector('#new-task__project') as HTMLInputElement
     const descriptionInput = dialog.querySelector('#new-task__description') as HTMLTextAreaElement
     const dateInput = dialog.querySelector('#new-task__date') as HTMLInputElement
     const timeInput = dialog.querySelector('#new-task__time') as HTMLInputElement
 
     if (dialog.returnValue === 'add') {
         const title = titleInput.value
+        const project = projectInput.value
         const description = descriptionInput.value
         const date = getDate(dateInput.value, timeInput.value)
 
         if (title) {
-            append({ id:uuid(), title, project: 'Inbox', description, date: date, hasTime: !!timeInput.value })
+            append({ id:uuid(), title, project, description, date: date, hasTime: !!timeInput.value })
         }
     }
 
