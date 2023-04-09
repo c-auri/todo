@@ -1,12 +1,14 @@
 import { Task } from './model/Task'
-import { renderTasks } from './view/TaskList'
 import { LocalStorage } from './model/LocalStorage'
+import { renderTasks } from './view/TaskList'
+import { renderProjectSelection } from './view/ProjectSelector'
 
 let storage: LocalStorage
 const currentProject = 'Inbox'
 
 export function initialize() {
     storage = new LocalStorage([currentProject])
+    renderProjectSelection(storage.getProjects())
     renderCurrentProject()
 }
 
