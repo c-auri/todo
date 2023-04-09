@@ -1,12 +1,12 @@
 import { Task } from './model/Task'
-import { renderTaskList } from './view/TaskList'
+import { renderTasks } from './view/TaskList'
 import { LocalStorage } from './model/LocalStorage'
 
 let storage: LocalStorage
 
 export function initialize() {
     storage = new LocalStorage()
-    renderTaskList(storage.getProject())
+    renderTasks(storage.getTasks())
 }
 
 /**
@@ -14,10 +14,10 @@ export function initialize() {
  * @param task The Todo to append.
  */
 export function append(task: Task) {
-    const currentProject = storage.getProject()
-    currentProject.add(task)
-    renderTaskList(currentProject)
-    storage.setProject(currentProject)
+    const tasks = storage.getTasks()
+    tasks.push(task)
+    renderTasks(tasks)
+    storage.setTasks(tasks)
 }
 
 /**
@@ -25,8 +25,9 @@ export function append(task: Task) {
  * @param task The Todo to remove.
  */
 export function remove(id: string) {
-    const currentProject = storage.getProject()
-    currentProject.remove(id)
-    renderTaskList(currentProject)
-    storage.setProject(currentProject)
+    const tasks = storage.getTasks()
+    const index = tasks.findIndex(task => task.id === id)
+    tasks.splice(index, 1)
+    renderTasks(tasks)
+    storage.setTasks(tasks)
 }

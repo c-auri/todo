@@ -1,14 +1,13 @@
 import TaskHtml from './Task.html'
-import { Project } from '../model/Project'
 import { Task } from '../model/Task'
 import { remove } from '../Controller'
 import { renderNewButton, renderNewTaskDialog } from './NewTask'
 import { isValid } from 'date-fns'
 
-export function renderTaskList(project: Project) {
+export function renderTasks(tasks: Task[]) {
     const main = document.querySelector('main')
 
-    const list = renderList(project)
+    const list = renderList(tasks)
     const dialog = renderNewTaskDialog()
     const newButton = renderNewButton(dialog)
 
@@ -18,15 +17,15 @@ export function renderTaskList(project: Project) {
     main.appendChild(newButton)
 }
 
-function renderList(project: Project) {
+function renderList(tasks: Task[]) {
     const ul = document.createElement('ul')
     ul.classList.add('mb-4', 'list-group', 'list-group-flush')
 
-    if (!project.isEmpty) {
+    if (tasks.length > 0) {
         ul.classList.add('border-top', 'border-bottom')
     }
 
-    for (const todo of project.tasks) {
+    for (const todo of tasks) {
         ul.appendChild(renderItem(todo))
     }
 

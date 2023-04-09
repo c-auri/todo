@@ -1,5 +1,4 @@
 import DialogHtml from './NewTaskDialog.html'
-import { Task } from '../model/Task'
 import { append } from '../Controller'
 import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
@@ -39,7 +38,7 @@ function submitTask(dialog: HTMLDialogElement) {
         const date = getDate(dateInput.value, timeInput.value)
 
         if (title) {
-            append(new Task(uuid(), title, description, new Date(date), !!timeInput.value))
+            append({ id:uuid(), title, description, date: date, hasTime: !!timeInput.value })
         }
     }
 
