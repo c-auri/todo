@@ -38,7 +38,7 @@ function submitTask(dialog: HTMLDialogElement) {
         const date = getDate(dateInput.value, timeInput.value)
 
         if (title) {
-            append({ id:uuid(), title, description, date: date, hasTime: !!timeInput.value })
+            append({ id:uuid(), title, project: 'Inbox', description, date: date, hasTime: !!timeInput.value })
         }
     }
 

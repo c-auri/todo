@@ -3,7 +3,8 @@ import { serialize, deserialize } from "../src/ts/model/Serialization";
 describe('Serialization', () => {
     test('preserves Tasks', () => {
         const withTime = {
-            id: 'ID1', 
+            id: 'ID1',
+            project: 'TestProject',
             title: 'TestTitle', 
             description: 'TestDescription', 
             date: new Date(), 
@@ -12,6 +13,7 @@ describe('Serialization', () => {
 
         const noTime = {
             id: 'ID2',
+            project: 'TestProject',
             title: 'TestTitle',
             description: 'TestDescription',
             date: new Date(),
@@ -20,6 +22,7 @@ describe('Serialization', () => {
 
         const noDate = {
             id: 'ID2',
+            project: 'TestProject',
             title: 'TestTitle',
             description: 'TestDescription',
             date: new Date(''),
