@@ -1,6 +1,7 @@
-import { append } from '../Controller'
 import Task from '../model/Task'
 import DialogHtml from './NewTaskDialog.html'
+import { append } from '../Controller'
+import { v4 as uuid } from 'uuid'
 
 export function renderNewButton(dialog: HTMLDialogElement) {
     const newButton = document.createElement('button')
@@ -38,7 +39,7 @@ function submitTask(dialog: HTMLDialogElement) {
         const time = timeInput.value
 
         if (title) {
-            append(new Task(title, description, new Date(date), time))
+            append(new Task(title, description, new Date(date), time, uuid()))
         }
     }
 
