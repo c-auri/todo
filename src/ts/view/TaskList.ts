@@ -1,19 +1,17 @@
 import TaskHtml from './Task.html'
 import { Task } from '../model/Task'
 import { remove } from '../Controller'
-import { renderNewButton, renderNewTaskDialog } from './NewTask'
+import { renderNewTaskButton } from './NewTask'
 import { isValid } from 'date-fns'
 
 export function renderTasks(tasks: Task[], projects: string[]) {
     const main = document.querySelector('main')
 
     const list = renderList(tasks)
-    const dialog = renderNewTaskDialog(projects)
-    const newButton = renderNewButton(dialog)
+    const newButton = renderNewTaskButton(projects)
 
     main.innerHTML = ''
     main.appendChild(list)
-    main.appendChild(dialog)
     main.appendChild(newButton)
 }
 

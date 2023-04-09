@@ -3,19 +3,22 @@ import { append } from '../Controller'
 import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 
-export function renderNewButton(dialog: HTMLDialogElement) {
+export function renderNewTaskButton(projects: string[]) {
     const newButton = document.createElement('button')
 
     newButton.id = 'new-task__btn'
     newButton.classList.add('btn')
     newButton.classList.add('btn-primary')
     newButton.innerHTML = 'Add New Task'
+
+    const dialog = renderDialog(projects)
+    document.body.appendChild(dialog)
     newButton.addEventListener('click', () => dialog.showModal())
 
     return newButton
 }
 
-export function renderNewTaskDialog(projects: string[]) {
+function renderDialog(projects: string[]) {
     const dialog = document.createElement('dialog')
 
     dialog.innerHTML = DialogHtml
