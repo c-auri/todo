@@ -1,18 +1,15 @@
 import TaskHtml from './Task.html'
 import { Task } from '../model/Task'
 import { remove } from '../Controller'
-import { renderNewTaskButton } from './NewTask'
 import { isValid } from 'date-fns'
 
-export function renderTasks(tasks: Task[], projects: string[]) {
+export function renderTasks(tasks: Task[]) {
     const main = document.querySelector('main')
 
     const list = renderList(tasks)
-    const newButton = renderNewTaskButton(projects)
 
     main.innerHTML = ''
     main.appendChild(list)
-    main.appendChild(newButton)
 }
 
 function renderList(tasks: Task[]) {

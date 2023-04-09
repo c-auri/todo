@@ -2,6 +2,7 @@ import { Task } from './model/Task'
 import { LocalStorage } from './model/LocalStorage'
 import { renderTasks } from './view/TaskList'
 import { renderProjectSelection } from './view/ProjectSelector'
+import { renderNewTaskButton } from './view/NewTask'
 
 let storage: LocalStorage
 const currentProject = 'Inbox'
@@ -9,6 +10,8 @@ const currentProject = 'Inbox'
 export function initialize() {
     storage = new LocalStorage([currentProject])
     renderProjectSelection(storage.getProjects())
+    const newButton = renderNewTaskButton(storage.getProjects())
+    document.querySelector('#menu').appendChild(newButton)
     renderCurrentProject()
 }
 
@@ -36,7 +39,6 @@ export function remove(id: string) {
 }
 
 function renderCurrentProject() {
-    const projects = storage.getProjects()
     const tasks = storage.getTasks(currentProject)
-    renderTasks(tasks, projects)
+    renderTasks(tasks)
 }

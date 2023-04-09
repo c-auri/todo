@@ -10,6 +10,7 @@ export function renderNewTaskButton(projects: string[]) {
     newButton.classList.add('btn')
     newButton.classList.add('btn-primary')
     newButton.innerHTML = 'Add New Task'
+    newButton.type = 'button'
 
     const dialog = renderDialog(projects)
     document.body.appendChild(dialog)
