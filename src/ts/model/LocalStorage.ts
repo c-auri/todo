@@ -8,9 +8,10 @@ export class LocalStorage {
         }
     }
 
-    getTasks() {
+    getTasks(project = '') {
         const json = localStorage.getItem('tasks')
-        return deserialize(json)
+        const tasks = deserialize(json)
+        return project ? tasks.filter(task => task.project === project) : tasks
     }
 
     setTasks(tasks: Task[]) {
@@ -23,5 +24,6 @@ export class LocalStorage {
 
     #populate() {
         localStorage.setItem('tasks', JSON.stringify([]))
+        localStorage.setItem('projects', 'Inbox')
     }
-}
+} 

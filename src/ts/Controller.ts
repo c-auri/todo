@@ -3,10 +3,11 @@ import { renderTasks } from './view/TaskList'
 import { LocalStorage } from './model/LocalStorage'
 
 let storage: LocalStorage
+const currentProject = 'Inbox'
 
 export function initialize() {
     storage = new LocalStorage()
-    renderTasks(storage.getTasks())
+    renderCurrentProject()
 }
 
 /**
@@ -16,8 +17,8 @@ export function initialize() {
 export function append(task: Task) {
     const tasks = storage.getTasks()
     tasks.push(task)
-    renderTasks(tasks)
     storage.setTasks(tasks)
+    renderCurrentProject()
 }
 
 /**
@@ -28,6 +29,11 @@ export function remove(id: string) {
     const tasks = storage.getTasks()
     const index = tasks.findIndex(task => task.id === id)
     tasks.splice(index, 1)
-    renderTasks(tasks)
     storage.setTasks(tasks)
+    renderCurrentProject()
+}
+
+function renderCurrentProject() {
+    const tasks = storage.getTasks(currentProject)
+    renderTasks(tasks)
 }
