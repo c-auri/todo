@@ -16,11 +16,11 @@ export default class Task {
     time: string
 
     constructor(
-            title: string, 
-            description: string, 
-            date: Date, 
-            time: string, 
-            id: string) {
+            id: string,
+            title: string,
+            description: string,
+            date: Date,
+            time: string) {
         this.id = id
         this.title = title
         this.description = description
@@ -60,7 +60,7 @@ export default class Task {
     }
 
     static fromData(data: TaskData) {
-        return new Task(data.title, data.description, data.date, data.time, data.id)
+        return new Task(data.id, data.title, data.description, data.date, data.time)
     }
 
     static fromJSON(json: string) {

@@ -39,7 +39,7 @@ function submitTask(dialog: HTMLDialogElement) {
         const time = timeInput.value
 
         if (title) {
-            append(new Task(title, description, new Date(date), time, uuid()))
+            append(new Task(uuid(), title, description, new Date(date), time))
         }
     }
 
