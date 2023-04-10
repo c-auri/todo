@@ -43,9 +43,18 @@ export default class Project {
     }
 
     static fromJSON(json: string) {
-        const plainProject = JSON.parse(json)
-        const plainTasks = plainProject.tasks as Task[]
-        const tasks = Array.from(plainTasks, task => new Task(task.title, task.date, task.id))
-        return new Project(plainProject.title, tasks)
+        return JSON.parse(json, this.#revive)
+    }
+
+    static #revive(key: string, value: unknown) {
+        switch (key) {
+            case '':
+                const obj = value as { title: string, tasks: Task[]}
+                return new Project(obj.title, obj.tasks)
+            case 'tasks':
+                return (value as unknown[]).map(obj => Task.fromJSON(JSON.stringify(obj)))
+            default:
+                return value
+        }
     }
 }

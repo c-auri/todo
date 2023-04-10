@@ -1,3 +1,5 @@
+import { parseJSON } from "date-fns"
+
 let numberOfTasks = 0
 
 export default class Task {
@@ -15,7 +17,20 @@ export default class Task {
         return { 
             id: this.id, 
             title: this.title, 
-            date: this.date 
+            date: this.date.toJSON()
+        }
+    }
+
+    static fromJSON(json: string) {
+        return JSON.parse(json, this.#revive)
+    }
+
+    static #revive(key: string, value: unknown) {
+        switch (key) {
+            case 'date':
+                return parseJSON(value as string)
+            default:
+                return value
         }
     }
 }
