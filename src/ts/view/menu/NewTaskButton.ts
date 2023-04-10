@@ -8,8 +8,8 @@ export function renderNewTaskButton(projects: string[]) {
 
     newButton.id = 'new-task__btn'
     newButton.classList.add('btn')
-    newButton.classList.add('btn-primary')
-    newButton.innerHTML = 'Add New Task'
+    newButton.classList.add('btn-success')
+    newButton.innerHTML = 'Add&nbsp;New&nbsp;Task'
     newButton.type = 'button'
 
     const dialog = renderDialog(projects)
