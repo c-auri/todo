@@ -1,6 +1,6 @@
 import { Task } from './model/Task'
 import { LocalStorage } from './model/LocalStorage'
-import { renderTasks } from './view/tasks/Tasks'
+import { renderTaskList } from './view/tasks/TaskList'
 import { renderMenu } from './view/menu/Menu'
 
 let storage: LocalStorage
@@ -28,5 +28,5 @@ export function remove(id: string) {
 
 function renderCurrentProject() {
     renderMenu(storage.getProjects(), currentProject)
-    renderTasks(storage.getTasks(currentProject))
+    renderTaskList(storage.getTasks(currentProject))
 }
