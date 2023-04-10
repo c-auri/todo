@@ -2,18 +2,18 @@ import DialogHtml from './ProjectSelectionDialog.html'
 import { setCurrentProject, appendProject } from '../../Controller'
 
 export function createProjectForm(projects: string[], current: string): HTMLDivElement {
-    const group = document.createElement('div')
-    group.classList.add('input-group')
+    const div = document.createElement('div')
+    div.classList.add('input-group')
 
     const label = document.createElement('span')
     label.classList.add('input-group-text')
     label.textContent = 'Project'
     
-    group.appendChild(label)
-    group.appendChild(createSelection(projects, current))
-    group.appendChild(createButton())
+    div.appendChild(label)
+    div.appendChild(createSelection(projects, current))
+    div.appendChild(createButton())
 
-    return group
+    return div
 }
 
 function createSelection(projects: string[], current: string): HTMLSelectElement {
@@ -50,7 +50,7 @@ function createButton(): HTMLButtonElement {
     button.type = 'button'
     button.textContent = '+'
     button.addEventListener('click', () => dialog.showModal())
-    
+
     return button
 }
 

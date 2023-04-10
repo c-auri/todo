@@ -4,19 +4,19 @@ import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 
 export function createNewTaskButton(project: string): HTMLButtonElement {
-    const newButton = document.createElement('button')
+    const button = document.createElement('button')
 
-    newButton.id = 'new-task__btn'
-    newButton.classList.add('btn')
-    newButton.classList.add('btn-success')
-    newButton.innerHTML = 'Add&nbsp;New&nbsp;Task'
-    newButton.type = 'button'
+    button.id = 'new-task__btn'
+    button.classList.add('btn')
+    button.classList.add('btn-success')
+    button.innerHTML = 'Add&nbsp;New&nbsp;Task'
+    button.type = 'button'
 
     const dialog = createDialog(project)
     document.body.appendChild(dialog)
-    newButton.addEventListener('click', () => dialog.showModal())
+    button.addEventListener('click', () => dialog.showModal())
 
-    return newButton
+    return button
 }
 
 function createDialog(project: string): HTMLDialogElement {
