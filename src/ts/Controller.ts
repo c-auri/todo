@@ -3,11 +3,19 @@ import { LocalStorage } from './model/LocalStorage'
 import { renderTaskList } from './view/tasks/TaskList'
 import { renderMenu } from './view/menu/Menu'
 
+const defaultProject = 'Inbox'
+
 let storage: LocalStorage
-const currentProject = 'Inbox'
+let currentProject: string
 
 export function initialize() {
+    currentProject = defaultProject
     storage = new LocalStorage([currentProject])
+    renderCurrentProject()
+}
+
+export function setCurrentProject(project: string) {
+    currentProject = project
     renderCurrentProject()
 }
 

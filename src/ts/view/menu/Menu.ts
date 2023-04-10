@@ -4,7 +4,7 @@ import { renderNewTaskButton } from "./NewTaskButton"
 export function renderMenu(projects: string[], currentProject: string) {
     const selectionContainer = document.querySelector('#project-selection-container') as HTMLDivElement
     selectionContainer.innerHTML = ''
-    selectionContainer.appendChild(renderProjectForm(projects))
+    selectionContainer.appendChild(renderProjectForm(projects, currentProject))
 
     const buttonContainer = document.querySelector('#new-task-container')
     buttonContainer.innerHTML = ''

@@ -1,7 +1,7 @@
 import DialogHtml from './ProjectSelectionDialog.html'
-import { appendProject } from '../../Controller'
+import { setCurrentProject, appendProject } from '../../Controller'
 
-export function renderProjectForm(projects: string[]) {
+export function renderProjectForm(projects: string[], currentProject: string) {
     const group = document.createElement('div')
     group.classList.add('input-group')
 
@@ -10,13 +10,13 @@ export function renderProjectForm(projects: string[]) {
     label.textContent = 'Project'
     
     group.appendChild(label)
-    group.appendChild(renderSelection(projects))
+    group.appendChild(renderSelection(projects, currentProject))
     group.appendChild(renderButton())
 
     return group
 }
 
-function renderSelection(projects: string[]) {
+function renderSelection(projects: string[], currentProject: string) {
     const selection = document.createElement('select')
     selection.classList.add('form-select')
     selection.id = 'project-selection'
@@ -26,8 +26,17 @@ function renderSelection(projects: string[]) {
         const option = document.createElement('option')
         option.value = project
         option.textContent = project
+
+        if (project === currentProject) {
+            option.selected = true
+        }
+
         selection.appendChild(option)
     }
+
+    selection.addEventListener('change', () => {
+        setCurrentProject(selection.value)
+    })
 
     return selection
 }
