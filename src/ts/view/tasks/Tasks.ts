@@ -1,6 +1,6 @@
 import TaskHtml from './Task.html'
-import { Task } from '../model/Task'
-import { remove } from '../Controller'
+import { Task } from '../../model/Task'
+import { remove } from '../../Controller'
 import { isValid } from 'date-fns'
 
 export function renderTasks(tasks: Task[]) {

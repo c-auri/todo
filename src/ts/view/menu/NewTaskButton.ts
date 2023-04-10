@@ -1,5 +1,5 @@
 import DialogHtml from './NewTaskDialog.html'
-import { append } from '../Controller'
+import { append } from '../../Controller'
 import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 

@@ -1,5 +1,8 @@
 export function renderProjectSelection(projects: string[]) {
-    const selection = document.querySelector('#project-selection')
+    const selection = document.createElement('select')
+    selection.classList.add('form-select')
+    selection.id = 'project-selection'
+    selection.style.minWidth = '10rem'
     
     for (const project of projects) {
         const option = document.createElement('option')
@@ -7,4 +10,6 @@ export function renderProjectSelection(projects: string[]) {
         option.textContent = project
         selection.appendChild(option)
     }
+
+    return selection
 }
