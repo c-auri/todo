@@ -1,7 +1,7 @@
 import DialogHtml from './ProjectSelectionDialog.html'
 import { setCurrentProject, appendProject } from '../../Controller'
 
-export function renderProjectForm(projects: string[], current: string): HTMLDivElement {
+export function createProjectForm(projects: string[], current: string): HTMLDivElement {
     const group = document.createElement('div')
     group.classList.add('input-group')
 
@@ -10,13 +10,13 @@ export function renderProjectForm(projects: string[], current: string): HTMLDivE
     label.textContent = 'Project'
     
     group.appendChild(label)
-    group.appendChild(renderSelection(projects, current))
-    group.appendChild(renderButton())
+    group.appendChild(createSelection(projects, current))
+    group.appendChild(createButton())
 
     return group
 }
 
-function renderSelection(projects: string[], current: string): HTMLSelectElement {
+function createSelection(projects: string[], current: string): HTMLSelectElement {
     const selection = document.createElement('select')
     selection.classList.add('form-select')
     selection.id = 'project-selection'
@@ -41,8 +41,8 @@ function renderSelection(projects: string[], current: string): HTMLSelectElement
     return selection
 }
 
-function renderButton(): HTMLButtonElement {
-    const dialog = renderDialog()
+function createButton(): HTMLButtonElement {
+    const dialog = createDialog()
     document.body.appendChild(dialog)
 
     const button = document.createElement('button')
@@ -53,7 +53,7 @@ function renderButton(): HTMLButtonElement {
     return button
 }
 
-function renderDialog(): HTMLDialogElement {
+function createDialog(): HTMLDialogElement {
     const dialog = document.createElement('dialog')
 
     dialog.innerHTML = DialogHtml

@@ -6,13 +6,13 @@ import { isValid } from 'date-fns'
 export function renderTaskList(tasks: Task[]): void {
     const main = document.querySelector('main')
 
-    const list = renderUL(tasks)
+    const list = createUL(tasks)
 
     main.innerHTML = ''
     main.appendChild(list)
 }
 
-function renderUL(tasks: Task[]): HTMLUListElement {
+function createUL(tasks: Task[]): HTMLUListElement {
     const ul = document.createElement('ul')
     ul.classList.add('mb-4', 'list-group', 'list-group-flush')
 
@@ -21,13 +21,13 @@ function renderUL(tasks: Task[]): HTMLUListElement {
     }
 
     for (const todo of tasks) {
-        ul.appendChild(renderLI(todo))
+        ul.appendChild(createLI(todo))
     }
 
     return ul
 }
 
-function renderLI(task : Task): HTMLLIElement {
+function createLI(task : Task): HTMLLIElement {
     const li = document.createElement('li')
     li.classList.add('list-group-item')
     li.setAttribute('data-id', ""+task.id)
