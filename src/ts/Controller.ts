@@ -11,6 +11,13 @@ export function initialize() {
     renderCurrentProject()
 }
 
+export function appendProject(title: string) {
+    const projects = storage.getProjects()
+    projects.push(title)
+    storage.setProjects(projects)
+    renderCurrentProject()
+}
+
 export function append(task: Task) {
     const tasks = storage.getTasks()
     tasks.push(task)

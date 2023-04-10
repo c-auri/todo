@@ -13,6 +13,10 @@ export class LocalStorage {
         return JSON.parse(json)
     }
 
+    setProjects(projects: string[]) {
+        localStorage.setItem('projects', JSON.stringify(projects))
+    }
+
     getTasks(project = '') {
         const tasks = deserialize(localStorage.getItem('tasks'))
         return project ? tasks.filter(task => task.project === project) : tasks

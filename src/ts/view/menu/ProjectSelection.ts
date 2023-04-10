@@ -1,3 +1,6 @@
+import DialogHtml from './ProjectSelectionDialog.html'
+import { appendProject } from '../../Controller'
+
 export function renderProjectForm(projects: string[]) {
     const group = document.createElement('div')
     group.classList.add('input-group')
@@ -30,9 +33,34 @@ function renderSelection(projects: string[]) {
 }
 
 function renderButton() {
+    const dialog = renderDialog()
+    document.body.appendChild(dialog)
+
     const button = document.createElement('button')
     button.classList.add('btn', 'btn-secondary')
     button.type = 'button'
     button.textContent = '+'
+    button.addEventListener('click', () => dialog.showModal())
     return button
+}
+
+function renderDialog() {
+    const dialog = document.createElement('dialog')
+
+    dialog.innerHTML = DialogHtml
+    dialog.style.width = 'min(100vw, 28rem)'
+    dialog.classList.add('border', 'rounded-4')
+    dialog.addEventListener('close', () => submitProject(dialog))
+
+    return dialog
+}
+
+function submitProject(dialog: HTMLDialogElement) {
+    const titleInput = document.querySelector('#new-project__title') as HTMLInputElement
+
+    if (dialog.returnValue === 'add') {
+        appendProject(titleInput.value)
+    }
+
+    titleInput.value = ''
 }
