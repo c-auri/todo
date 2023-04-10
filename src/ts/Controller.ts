@@ -26,14 +26,14 @@ export function appendProject(title: string) {
     renderCurrentProject()
 }
 
-export function append(task: Task) {
+export function appendTask(task: Task) {
     const tasks = storage.getTasks()
     tasks.push(task)
     storage.setTasks(tasks)
     renderCurrentProject()
 }
 
-export function remove(id: string) {
+export function removeTask(id: string) {
     const tasks = storage.getTasks()
     const index = tasks.findIndex(task => task.id === id)
     tasks.splice(index, 1)

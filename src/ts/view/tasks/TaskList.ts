@@ -1,6 +1,6 @@
 import TaskHtml from './Task.html'
 import { Task } from '../../model/Task'
-import { remove } from '../../Controller'
+import { removeTask } from '../../Controller'
 import { isValid } from 'date-fns'
 
 export function renderTaskList(tasks: Task[]) {
@@ -36,7 +36,7 @@ function renderLI(task : Task) {
     li.querySelector('#task__title').textContent = task.title
     li.querySelector('#task__duedate').textContent = formatDate(task)
     li.querySelector('#task__description').textContent = task.description
-    li.querySelector('button').addEventListener('click', () => remove(task.id))
+    li.querySelector('button').addEventListener('click', () => removeTask(task.id))
 
     return li
 }

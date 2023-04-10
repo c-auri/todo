@@ -1,5 +1,5 @@
 import DialogHtml from './NewTaskDialog.html'
-import { append } from '../../Controller'
+import { appendTask } from '../../Controller'
 import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 
@@ -41,7 +41,7 @@ function submitTask(dialog: HTMLDialogElement, project: string) {
         const { date, hasTime } = getDueDateInfo(dateInput.value, timeInput.value)
 
         if (title) {
-            append({
+            appendTask({
                 id:uuid(),
                 title,
                 project,
