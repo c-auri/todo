@@ -35,6 +35,6 @@ export function remove(id: string) {
 }
 
 function renderCurrentProject() {
-    renderMenu(storage.getProjects())
+    renderMenu(storage.getProjects(), currentProject)
     renderTasks(storage.getTasks(currentProject))
 }
