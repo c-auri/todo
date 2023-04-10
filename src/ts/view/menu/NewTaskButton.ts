@@ -38,7 +38,7 @@ function submitTask(dialog: HTMLDialogElement, project: string) {
 
     if (dialog.returnValue === 'add') {
         const title = titleInput.value
-        const date = getDate(dateInput.value, timeInput.value)
+        const { date, hasTime } = getDueDateInfo(dateInput.value, timeInput.value)
 
         if (title) {
             append({
@@ -47,7 +47,7 @@ function submitTask(dialog: HTMLDialogElement, project: string) {
                 project,
                 description: descriptionInput.value,
                 date: date,
-                hasTime: !!timeInput.value })
+                hasTime: hasTime })
         }
     }
 
@@ -55,13 +55,14 @@ function submitTask(dialog: HTMLDialogElement, project: string) {
     dateInput.value = ''
 }
 
-function getDate(dateString: string, time: string) {
+function getDueDateInfo(dateString: string, time: string) {
+    const hasTime = !!time
     let date = new Date(dateString)
 
-    if (!!time) {
+    if (hasTime) {
         const [ hours, minutes ] = time.split(':').map(token => +token)
         date = set(date, { hours, minutes })
     }
 
-    return date
+    return { date, hasTime }
 }
