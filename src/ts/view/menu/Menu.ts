@@ -1,4 +1,4 @@
-import { renderProjectSelection } from "./ProjectSelector"
+import { renderProjectSelection } from "./ProjectSelection"
 import { renderNewTaskButton } from "./NewTaskButton"
 
 export function renderMenu(projects: string[], currentProject: string) {
