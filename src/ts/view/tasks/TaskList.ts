@@ -3,7 +3,7 @@ import { Task } from '../../model/Task'
 import { removeTask } from '../../Controller'
 import { isValid } from 'date-fns'
 
-export function renderTaskList(tasks: Task[]) {
+export function renderTaskList(tasks: Task[]): void {
     const main = document.querySelector('main')
 
     const list = renderUL(tasks)
@@ -12,7 +12,7 @@ export function renderTaskList(tasks: Task[]) {
     main.appendChild(list)
 }
 
-function renderUL(tasks: Task[]) {
+function renderUL(tasks: Task[]): HTMLUListElement {
     const ul = document.createElement('ul')
     ul.classList.add('mb-4', 'list-group', 'list-group-flush')
 
@@ -27,7 +27,7 @@ function renderUL(tasks: Task[]) {
     return ul
 }
 
-function renderLI(task : Task) {
+function renderLI(task : Task): HTMLLIElement {
     const li = document.createElement('li')
     li.classList.add('list-group-item')
     li.setAttribute('data-id', ""+task.id)
@@ -41,7 +41,7 @@ function renderLI(task : Task) {
     return li
 }
 
-function formatDate(task: Task) {
+function formatDate(task: Task): string {
     return isValid(task.date) ? task.date.toLocaleString([], dateOptions(task.hasTime)) : ''
 }
 

@@ -3,7 +3,7 @@ import { appendTask } from '../../Controller'
 import { set } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 
-export function renderNewTaskButton(project: string) {
+export function renderNewTaskButton(project: string): HTMLButtonElement {
     const newButton = document.createElement('button')
 
     newButton.id = 'new-task__btn'
@@ -19,7 +19,7 @@ export function renderNewTaskButton(project: string) {
     return newButton
 }
 
-function renderDialog(project: string) {
+function renderDialog(project: string): HTMLDialogElement {
     const dialog = document.createElement('dialog')
 
     dialog.innerHTML = DialogHtml
@@ -30,7 +30,7 @@ function renderDialog(project: string) {
     return dialog
 }
 
-function submitTask(dialog: HTMLDialogElement, project: string) {
+function submitTask(dialog: HTMLDialogElement, project: string): void {
     const titleInput = dialog.querySelector('#new-task__title') as HTMLInputElement
     const descriptionInput = dialog.querySelector('#new-task__description') as HTMLTextAreaElement
     const dateInput = dialog.querySelector('#new-task__date') as HTMLInputElement
@@ -55,7 +55,7 @@ function submitTask(dialog: HTMLDialogElement, project: string) {
     dateInput.value = ''
 }
 
-function getDueDateInfo(dateString: string, time: string) {
+function getDueDateInfo(dateString: string, time: string): DueDateInfo {
     const hasTime = !!time
     let date = new Date(dateString)
 
@@ -65,4 +65,9 @@ function getDueDateInfo(dateString: string, time: string) {
     }
 
     return { date, hasTime }
+}
+
+interface DueDateInfo {
+    date: Date
+    hasTime: boolean
 }

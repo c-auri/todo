@@ -1,7 +1,7 @@
 import DialogHtml from './ProjectSelectionDialog.html'
 import { setCurrentProject, appendProject } from '../../Controller'
 
-export function renderProjectForm(projects: string[], currentProject: string) {
+export function renderProjectForm(projects: string[], current: string): HTMLDivElement {
     const group = document.createElement('div')
     group.classList.add('input-group')
 
@@ -10,13 +10,13 @@ export function renderProjectForm(projects: string[], currentProject: string) {
     label.textContent = 'Project'
     
     group.appendChild(label)
-    group.appendChild(renderSelection(projects, currentProject))
+    group.appendChild(renderSelection(projects, current))
     group.appendChild(renderButton())
 
     return group
 }
 
-function renderSelection(projects: string[], currentProject: string) {
+function renderSelection(projects: string[], current: string): HTMLSelectElement {
     const selection = document.createElement('select')
     selection.classList.add('form-select')
     selection.id = 'project-selection'
@@ -27,7 +27,7 @@ function renderSelection(projects: string[], currentProject: string) {
         option.value = project
         option.textContent = project
 
-        if (project === currentProject) {
+        if (project === current) {
             option.selected = true
         }
 
@@ -41,7 +41,7 @@ function renderSelection(projects: string[], currentProject: string) {
     return selection
 }
 
-function renderButton() {
+function renderButton(): HTMLButtonElement {
     const dialog = renderDialog()
     document.body.appendChild(dialog)
 
@@ -53,7 +53,7 @@ function renderButton() {
     return button
 }
 
-function renderDialog() {
+function renderDialog(): HTMLDialogElement {
     const dialog = document.createElement('dialog')
 
     dialog.innerHTML = DialogHtml
@@ -64,7 +64,7 @@ function renderDialog() {
     return dialog
 }
 
-function submitProject(dialog: HTMLDialogElement) {
+function submitProject(dialog: HTMLDialogElement): void {
     const titleInput = document.querySelector('#new-project__title') as HTMLInputElement
 
     if (dialog.returnValue === 'add') {
