@@ -5,9 +5,7 @@ import { isValid } from 'date-fns'
 
 export function renderTaskList(tasks: Task[]): void {
     const main = document.querySelector('main')
-
     const list = createUL(tasks)
-
     main.innerHTML = ''
     main.appendChild(list)
 }

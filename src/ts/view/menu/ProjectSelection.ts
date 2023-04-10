@@ -50,6 +50,7 @@ function createButton(): HTMLButtonElement {
     button.type = 'button'
     button.textContent = '+'
     button.addEventListener('click', () => dialog.showModal())
+    
     return button
 }
 
