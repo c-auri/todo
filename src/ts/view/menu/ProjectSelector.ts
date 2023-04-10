@@ -3,7 +3,7 @@ export function renderProjectSelection(projects: string[]) {
     selection.classList.add('form-select')
     selection.id = 'project-selection'
     selection.style.minWidth = '10rem'
-    
+
     for (const project of projects) {
         const option = document.createElement('option')
         option.value = project

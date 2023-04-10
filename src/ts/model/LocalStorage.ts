@@ -31,4 +31,4 @@ export class LocalStorage {
         localStorage.setItem('tasks', JSON.stringify([]))
         localStorage.setItem('projects', JSON.stringify(projects))
     }
-} 
+}
