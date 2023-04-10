@@ -14,8 +14,7 @@ export class LocalStorage {
     }
 
     getTasks(project = '') {
-        const json = localStorage.getItem('tasks')
-        const tasks = deserialize(json)
+        const tasks = deserialize(localStorage.getItem('tasks'))
         return project ? tasks.filter(task => task.project === project) : tasks
     }
 

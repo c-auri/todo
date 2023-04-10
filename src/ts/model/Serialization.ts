@@ -22,8 +22,7 @@ function revive(key: string, value: unknown) {
         case '':
             return (value as unknown[]).map(obj => obj as Task)
         case 'date':
-            const iso = value as string
-            return parseJSON(iso)
+            return parseJSON(value as string)
         default:
             return value
     }
