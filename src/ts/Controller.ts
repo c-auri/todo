@@ -11,10 +11,6 @@ export function initialize() {
     renderCurrentProject()
 }
 
-/**
- * Appends task to the current project.
- * @param task The Todo to append.
- */
 export function append(task: Task) {
     const tasks = storage.getTasks()
     tasks.push(task)
@@ -22,10 +18,6 @@ export function append(task: Task) {
     renderCurrentProject()
 }
 
-/**
- * Removes task from the current project.
- * @param task The Todo to remove.
- */
 export function remove(id: string) {
     const tasks = storage.getTasks()
     const index = tasks.findIndex(task => task.id === id)
