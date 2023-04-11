@@ -35,7 +35,7 @@ function submitTask(dialog: HTMLDialogElement): void {
     dateInput.value = ''
 }
 
-function getDueDateInfo(dateString: string, time: string): DueDateInfo {
+function getDueDateInfo(dateString: string, time: string): { date: Date, hasTime: boolean } {
     const hasTime = !!time
     let date = new Date(dateString)
 
@@ -45,9 +45,4 @@ function getDueDateInfo(dateString: string, time: string): DueDateInfo {
     }
 
     return { date, hasTime }
-}
-
-interface DueDateInfo {
-    date: Date
-    hasTime: boolean
 }
