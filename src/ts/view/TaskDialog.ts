@@ -3,7 +3,7 @@ import { appendTask, getCurrentProject } from "../Controller"
 import { v4 as uuid } from 'uuid'
 import { set } from 'date-fns'
 
-export function addTaskDialogEvents(): void {
+export function addNewTaskDialogEvents(): void {
     const dialog = document.querySelector('#new-task-dialog') as HTMLDialogElement
     const button = document.querySelector('#new-task-button') as HTMLButtonElement
     dialog.addEventListener('close', () => submitTask(dialog))

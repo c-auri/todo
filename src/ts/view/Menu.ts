@@ -1,7 +1,7 @@
 import { addProjectDialogEvents } from "./ProjectDialog"
-import { addTaskDialogEvents } from "./TaskDialog"
+import { addNewTaskDialogEvents } from "./TaskDialog"
 
 export function initializeMenu() {
     addProjectDialogEvents()
-    addTaskDialogEvents()
+    addNewTaskDialogEvents()
 }
