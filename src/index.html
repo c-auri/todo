@@ -73,33 +73,33 @@
         </form>
     </dialog>
 
-    <dialog class="dialog border rounded-4" id="new-task-dialog">
+    <dialog class="dialog border rounded-4" id="task-dialog">
         <form method="dialog" class="border p-4 rounded-4">
             <div class="mb-3">
-                <span class="h3 fw-bold" id ="new-task-heading"></span>
+                <span class="h3 fw-bold" id ="task-dialog-heading"></span>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="new-task-title" placeholder="Title">
-                <label class="form-label" for="new-task-title">Title</label>
+                <input type="text" class="form-control" id="task-dialog-title" placeholder="Title">
+                <label class="form-label" for="task-dialog-title">Title</label>
             </div>
             <div class="input-group">
                 <span class="form-floating mb-3">
-                    <input type="date" class="form-control" id="new-task-date">
-                    <label class="form-label" for="new-task-date">Due Date</label>
+                    <input type="date" class="form-control" id="task-dialog-date">
+                    <label class="form-label" for="task-dialog-date">Due Date</label>
                 </span>
                 <span class="form-floating mb-3">
-                    <input type="time" class="form-control" id="new-task-time">
-                    <label class="form-label" for="new-task-time">Time</label>
+                    <input type="time" class="form-control" id="task-dialog-time">
+                    <label class="form-label" for="task-dialog-time">Time</label>
                 </span>
             </div>
             <div class="form-floating mb-3">
                 <div clasS="form-floating"></div>
-                <textarea class="form-control" id="new-task-description" placeholder="Description" style="height:8rem;"></textarea>
-                <label class="form-label" for="new-task-description">Description</label>
+                <textarea class="form-control" id="task-dialog-description" placeholder="Description" style="height:8rem;"></textarea>
+                <label class="form-label" for="task-dialog-description">Description</label>
             </div>
             <div class="d-flex justify-content-end gap-2">
                 <button class="btn btn-outline-secondary">Cancel</button>
-                <button class="btn btn-success" id="new-task-confirm-button">Add Task</button>
+                <button class="btn btn-success" id="task-dialog-confirm-button">Add Task</button>
             </div>
         </form>
     </dialog>
