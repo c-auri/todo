@@ -4,28 +4,21 @@ import { removeTask } from '../../Controller'
 import { isValid } from 'date-fns'
 
 export function renderTaskList(tasks: Task[]): void {
-    const main = document.querySelector('main')
-    const list = createUL(tasks)
-    main.innerHTML = ''
-    main.appendChild(list)
-}
+    const ul = document.querySelector('#task-list')
+    ul.innerHTML = ''
 
-function createUL(tasks: Task[]): HTMLUListElement {
-    const ul = document.createElement('ul')
-    ul.classList.add('mb-4', 'list-group', 'list-group-flush')
-
-    if (tasks.length > 0) {
-        ul.classList.add('border-top', 'border-bottom')
+    for (const task of tasks) {
+        ul.appendChild(createTask(task))
     }
 
-    for (const todo of tasks) {
-        ul.appendChild(createLI(todo))
+    if (tasks.length === 0)  {
+        ul.classList.add('hidden')
+    } else {
+        ul.classList.remove('hidden')
     }
-
-    return ul
 }
 
-function createLI(task : Task): HTMLLIElement {
+function createTask(task : Task): HTMLLIElement {
     const li = document.createElement('li')
     li.classList.add('list-group-item')
     li.setAttribute('data-id', ""+task.id)
