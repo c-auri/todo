@@ -11,3 +11,15 @@
 .hidden {
     display: none;
 }
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.btn-icon {
+    padding: .5rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+}
