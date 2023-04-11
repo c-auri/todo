@@ -29,6 +29,7 @@ export function pushProject(title: string) {
     const projects = storage.getProjects()
     projects.push(title)
     storage.setProjects(projects)
+    currentProject = title
     renderCurrentProject()
 }
 
