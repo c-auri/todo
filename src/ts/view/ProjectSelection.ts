@@ -1,4 +1,4 @@
-import { setCurrentProject } from '../../Controller'
+import { setCurrentProject } from '../Controller'
 
 export function renderProjectOptions(projects: string[], currentProject: string): void {
     const selection = document.querySelector('#project-selection') as HTMLSelectElement

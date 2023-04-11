@@ -1,5 +1,5 @@
-import { Task } from '../../model/Task'
-import { removeTask } from '../../Controller'
+import { Task } from '../model/Task'
+import { removeTask } from '../Controller'
 import { isValid } from 'date-fns'
 
 export function renderTaskList(tasks: Task[]): void {

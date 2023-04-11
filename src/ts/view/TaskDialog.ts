@@ -1,4 +1,4 @@
-import { appendTask, getCurrentProject } from "../../Controller"
+import { appendTask, getCurrentProject } from "../Controller"
 import { v4 as uuid } from 'uuid'
 import { set } from 'date-fns'
 

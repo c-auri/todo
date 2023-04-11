@@ -1,4 +1,4 @@
-import { appendProject } from "../../Controller"
+import { appendProject } from "../Controller"
 
 export function addProjectDialogEvents(): void {
     const dialog = document.querySelector('#new-project-dialog') as HTMLDialogElement
