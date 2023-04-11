@@ -1,7 +1,7 @@
 import { Task } from "../model/Task"
 import { pushTask, editTask as updateTask, getCurrentProject } from "../Controller"
 import { v4 as uuid } from 'uuid'
-import { set, format } from 'date-fns'
+import { set, isValid, format } from 'date-fns'
 
 export function addNewTaskDialogEvents(): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
@@ -26,11 +26,10 @@ function resetDialog(mode: 'add' | 'update', task: Task) {
     const descriptionInput = dialog.querySelector('#task-dialog-description') as HTMLTextAreaElement
     const dateInput = dialog.querySelector('#task-dialog-date') as HTMLInputElement
     const timeInput = dialog.querySelector('#task-dialog-time') as HTMLInputElement
-
-
+    
     headingElement.textContent = mode === 'add' ? 'New Task' : 'Update Task'
     titleInput.value = task ? task.title : ''
-    dateInput.value = task ? task.date.toJSON() : ''
+    dateInput.value = task ? isValid(task.date) ? format(task.date, 'yyyy-MM-dd') : '' : ''
     timeInput.value = task ? task.hasTime ? format(task.date, "hh:mm") : '' : ''
     descriptionInput.value = task ? task.description : ''
     
