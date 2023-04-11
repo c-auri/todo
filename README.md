@@ -5,5 +5,17 @@ This project uses webpack, TypeScript, SCSS and ESLint. To set it up I followed 
 ## Links
 - https://simon-lutterbie.medium.com/html-templates-in-webpack-b9f9d30fffba
 
+## Learned
+- TS
+- Bootstrap
+- JSON serialization
+- Date-fns
+- HTML Template elements
+
 ## Todo
-- [ ] implement backup in case LocalStorage is not available
+- [ ] backup in case LocalStorage is not available
+- [ ] priorities
+- [ ] project deletion
+- [ ] project assignment
+- [ ] table view with header
+- [ ] sorting
