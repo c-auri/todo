@@ -1,4 +1,4 @@
-import { appendProject } from "../Controller"
+import { pushProject } from "../Controller"
 
 export function addProjectDialogEvents(): void {
     const dialog = document.querySelector('#new-project-dialog') as HTMLDialogElement
@@ -11,7 +11,7 @@ function submitProject(isAdded: boolean): void {
     const titleInput = document.querySelector('#new-project-title') as HTMLInputElement
 
     if (isAdded) {
-        appendProject(titleInput.value)
+        pushProject(titleInput.value)
     }
 
     titleInput.value = ''

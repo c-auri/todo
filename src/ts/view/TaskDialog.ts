@@ -1,5 +1,5 @@
 import { Task } from "../model/Task"
-import { appendTask, getCurrentProject } from "../Controller"
+import { pushTask, getCurrentProject } from "../Controller"
 import { v4 as uuid } from 'uuid'
 import { set } from 'date-fns'
 
@@ -44,7 +44,7 @@ function submitTask(dialog: HTMLDialogElement): void {
     }
 
     if (dialog.returnValue === 'add') {
-        appendTask(task)
+        pushTask(task)
     }
 }
 

@@ -25,14 +25,14 @@ export function setCurrentProject(project: string) {
     renderCurrentProject()
 }
 
-export function appendProject(title: string) {
+export function pushProject(title: string) {
     const projects = storage.getProjects()
     projects.push(title)
     storage.setProjects(projects)
     renderCurrentProject()
 }
 
-export function appendTask(task: Task) {
+export function pushTask(task: Task) {
     const tasks = storage.getTasks()
     tasks.push(task)
     storage.setTasks(tasks)
