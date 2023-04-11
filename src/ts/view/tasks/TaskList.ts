@@ -1,4 +1,3 @@
-import TaskHtml from './Task.html'
 import { Task } from '../../model/Task'
 import { removeTask } from '../../Controller'
 import { isValid } from 'date-fns'
@@ -18,15 +17,15 @@ export function renderTaskList(tasks: Task[]): void {
     }
 }
 
-function createTask(task : Task): HTMLLIElement {
-    const li = document.createElement('li')
-    li.classList.add('list-group-item')
-    li.setAttribute('data-id', ""+task.id)
+function createTask(task : Task): HTMLElement {
+    const template = document.querySelector('#task') as HTMLTemplateElement
+    const clone = template.content.cloneNode(true) as HTMLElement
+    const li = clone.querySelector('li')
 
-    li.innerHTML = TaskHtml
-    li.querySelector('#task-title').textContent = task.title
-    li.querySelector('#task-duedate').textContent = formatDate(task)
-    li.querySelector('#task-description').textContent = task.description
+    li.setAttribute('data-id', ""+task.id)
+    li.querySelector('.task-title').textContent = task.title
+    li.querySelector('.task-duedate').textContent = formatDate(task)
+    li.querySelector('.task-description').textContent = task.description
     li.querySelector('button').addEventListener('click', () => removeTask(task.id))
 
     return li

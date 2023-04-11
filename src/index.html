@@ -28,6 +28,23 @@
 
     <main class="container-fluid p-4 mw-800">
         <ul class="mb-4 list-group list-group-flush border-top border-bottom" id="task-list"></ul>
+        <template id="task">
+            <li class="list-group-item">
+                <div class="row align-items-start justify-content-between">
+                    <span class="col-1 pt-1">
+                        <input type="checkbox" class="form-check-input">
+                    </span>
+                    <div class="col">
+                        <div class="task-title fw-semibold"></div>
+                        <div class="task-duedate text-secondary"></div>
+                        <div class="task-description mb-3"></div>
+                    </div>
+                    <span class="col-1 pt-1" id="task-button-group">
+                        <button class="btn btn-light">x</button>
+                    </span>
+                </div>
+            </li>
+        </template>
     </main>
 
     <dialog class="dialog border rounded-4" id="new-project-dialog">
