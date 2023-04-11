@@ -39,6 +39,15 @@ export function pushTask(task: Task) {
     renderCurrentProject()
 }
 
+export function editTask(newTask: Task) {
+    const tasks = storage.getTasks()
+    const index = tasks.findIndex(task => task.id === newTask.id)
+    tasks.splice(index, 1)
+    tasks.push(newTask)
+    storage.setTasks(tasks)
+    renderCurrentProject()
+}
+
 export function removeTask(id: string) {
     const tasks = storage.getTasks()
     const index = tasks.findIndex(task => task.id === id)

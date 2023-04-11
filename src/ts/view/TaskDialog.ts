@@ -1,24 +1,24 @@
 import { Task } from "../model/Task"
-import { pushTask, getCurrentProject } from "../Controller"
+import { pushTask, editTask as updateTask, getCurrentProject } from "../Controller"
 import { v4 as uuid } from 'uuid'
-import { set } from 'date-fns'
+import { set, format } from 'date-fns'
 
 export function addNewTaskDialogEvents(): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
     const openButton = document.querySelector('#new-task-button') as HTMLButtonElement
     const confirmButton = document.querySelector('#task-dialog-confirm-button') as HTMLButtonElement
 
-    openButton.addEventListener('click', showTaskDialog)
+    openButton.addEventListener('click', () => showTaskDialog('add'))
     confirmButton.addEventListener('click', (e) => submitTask(e, dialog))
 }
 
-export function showTaskDialog(): void {
+export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
-    resetDialog()
+    resetDialog(mode, task)
     dialog.showModal()
 }
 
-function resetDialog() {
+function resetDialog(mode: 'add' | 'update', task: Task) {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
 
     const headingElement = dialog.querySelector('#task-dialog-heading') as HTMLSpanElement
@@ -26,16 +26,17 @@ function resetDialog() {
     const descriptionInput = dialog.querySelector('#task-dialog-description') as HTMLTextAreaElement
     const dateInput = dialog.querySelector('#task-dialog-date') as HTMLInputElement
     const timeInput = dialog.querySelector('#task-dialog-time') as HTMLInputElement
-    
-    headingElement.textContent = 'New Task'
-    titleInput.value = ''
-    dateInput.value = ''
-    timeInput.value = ''
-    descriptionInput.value = ''
+
+
+    headingElement.textContent = mode === 'add' ? 'New Task' : 'Update Task'
+    titleInput.value = task ? task.title : ''
+    dateInput.value = task ? task.date.toJSON() : ''
+    timeInput.value = task ? task.hasTime ? format(task.date, "hh:mm") : '' : ''
+    descriptionInput.value = task ? task.description : ''
     
     const confirmButton = dialog.querySelector('#task-dialog-confirm-button') as HTMLButtonElement
-    confirmButton.value = 'add'
-    confirmButton.textContent = 'Add New Task'
+    confirmButton.value = mode
+    confirmButton.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Task`
 }
 
 function submitTask(event: Event, dialog: HTMLDialogElement): void {
@@ -44,7 +45,13 @@ function submitTask(event: Event, dialog: HTMLDialogElement): void {
     const task = getTask()
 
     if (task) {
-        pushTask(task)
+        const button = event.target as HTMLButtonElement
+
+        if (button.textContent.includes('Add')) {
+            pushTask(task)
+        } else if (button.textContent.includes('Update')) {
+            updateTask(task)
+        }
     }
 
     dialog.close()
