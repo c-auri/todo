@@ -7,6 +7,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
+
     <header class="bg-dark px-3 py-3">
         <nav class="navbar mx-auto mw-800">
             <div class="container-fluid">
@@ -20,6 +21,24 @@
             </div>
         </nav>
     </header>
+
     <main class="container-fluid p-4 mw-800"></main>
+
+    <dialog class="dialog border rounded-4" id="new-project-dialog">
+        <form method="dialog" class="border p-4 rounded-4">
+            <div class="mb-3">
+                <span class="h3 fw-bold">New Project</span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="new-project-title" placeholder="Title">
+                <label class="form-label" for="new-project-title">Title</label>
+            </div>
+            <div>
+                <button class="btn btn-success" value="add">Add Project</button>
+                <button class="btn btn-outline-secondary">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
 </body>
 </html>

@@ -1,4 +1,5 @@
 import { createProjectForm } from "./ProjectSelection"
+import { addProjectDialogEvent } from "./ProjectDialog"
 import { createNewTaskButton } from "./NewTaskButton"
 
 export function renderMenu(projects: string[], currentProject: string): void {
@@ -9,4 +10,8 @@ export function renderMenu(projects: string[], currentProject: string): void {
     const buttonContainer = document.querySelector('#new-task-container')
     buttonContainer.innerHTML = ''
     buttonContainer.appendChild(createNewTaskButton(currentProject))
+}
+
+export function initializeMenu() {
+    addProjectDialogEvent()
 }

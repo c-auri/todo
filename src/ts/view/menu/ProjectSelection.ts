@@ -1,5 +1,4 @@
-import DialogHtml from './ProjectSelectionDialog.html'
-import { setCurrentProject, appendProject } from '../../Controller'
+import { setCurrentProject } from '../../Controller'
 
 export function createProjectForm(projects: string[], current: string): HTMLDivElement {
     const div = document.createElement('div')
@@ -42,35 +41,13 @@ function createSelection(projects: string[], current: string): HTMLSelectElement
 }
 
 function createButton(): HTMLButtonElement {
-    const dialog = createDialog()
-    document.body.appendChild(dialog)
-
     const button = document.createElement('button')
     button.classList.add('btn', 'btn-secondary')
     button.type = 'button'
     button.textContent = '+'
+
+    const dialog = document.querySelector('#new-project-dialog') as HTMLDialogElement
     button.addEventListener('click', () => dialog.showModal())
 
     return button
-}
-
-function createDialog(): HTMLDialogElement {
-    const dialog = document.createElement('dialog')
-
-    dialog.innerHTML = DialogHtml
-    dialog.style.width = 'min(100vw, 28rem)'
-    dialog.classList.add('border', 'rounded-4')
-    dialog.addEventListener('close', () => submitProject(dialog))
-
-    return dialog
-}
-
-function submitProject(dialog: HTMLDialogElement): void {
-    const titleInput = document.querySelector('#new-project-title') as HTMLInputElement
-
-    if (dialog.returnValue === 'add') {
-        appendProject(titleInput.value)
-    }
-
-    titleInput.value = ''
 }

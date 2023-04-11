@@ -1,7 +1,7 @@
 import { Task } from './model/Task'
 import { LocalStorage } from './model/LocalStorage'
 import { renderTaskList } from './view/tasks/TaskList'
-import { renderMenu } from './view/menu/Menu'
+import { renderMenu, addMenuEvents } from './view/menu/Menu'
 
 const defaultProject = 'Inbox'
 
@@ -11,6 +11,7 @@ let currentProject: string
 export function initialize() {
     currentProject = defaultProject
     storage = new LocalStorage([currentProject])
+    addMenuEvents()
     renderCurrentProject()
 }
 
