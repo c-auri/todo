@@ -6,7 +6,33 @@ export function addTaskDialogEvents(): void {
     const dialog = document.querySelector('#new-task-dialog') as HTMLDialogElement
     const button = document.querySelector('#new-task-button') as HTMLButtonElement
     dialog.addEventListener('close', () => submitTask(dialog))
-    button.addEventListener('click', () => dialog.showModal())
+    button.addEventListener('click', showNewTaskDialog)
+}
+
+function showNewTaskDialog(): void {
+    const dialog = document.querySelector('#new-task-dialog') as HTMLDialogElement
+    resetDialog()
+    dialog.showModal()
+}
+
+function resetDialog() {
+    const dialog = document.querySelector('#new-task-dialog') as HTMLDialogElement
+
+    const headingElement = dialog.querySelector('#new-task-heading') as HTMLSpanElement
+    const titleInput = dialog.querySelector('#new-task-title') as HTMLInputElement
+    const descriptionInput = dialog.querySelector('#new-task-description') as HTMLTextAreaElement
+    const dateInput = dialog.querySelector('#new-task-date') as HTMLInputElement
+    const timeInput = dialog.querySelector('#new-task-time') as HTMLInputElement
+    
+    headingElement.textContent = 'New Task'
+    titleInput.value = ''
+    dateInput.value = ''
+    timeInput.value = ''
+    descriptionInput.value = ''
+    
+    const confirmButton = dialog.querySelector('#new-task-confirm-button') as HTMLButtonElement
+    confirmButton.value = 'add'
+    confirmButton.textContent = 'Add New Task'
 }
 
 function submitTask(dialog: HTMLDialogElement): void {
@@ -30,9 +56,6 @@ function submitTask(dialog: HTMLDialogElement): void {
                 hasTime: hasTime })
         }
     }
-
-    titleInput.value = ''
-    dateInput.value = ''
 }
 
 function getDueDateInfo(dateString: string, time: string): { date: Date, hasTime: boolean } {
