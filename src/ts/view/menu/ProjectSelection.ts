@@ -66,7 +66,7 @@ function createDialog(): HTMLDialogElement {
 }
 
 function submitProject(dialog: HTMLDialogElement): void {
-    const titleInput = document.querySelector('#new-project__title') as HTMLInputElement
+    const titleInput = document.querySelector('#new-project-title') as HTMLInputElement
 
     if (dialog.returnValue === 'add') {
         appendProject(titleInput.value)

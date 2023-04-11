@@ -31,10 +31,10 @@ function createDialog(project: string): HTMLDialogElement {
 }
 
 function submitTask(dialog: HTMLDialogElement, project: string): void {
-    const titleInput = dialog.querySelector('#new-task__title') as HTMLInputElement
-    const descriptionInput = dialog.querySelector('#new-task__description') as HTMLTextAreaElement
-    const dateInput = dialog.querySelector('#new-task__date') as HTMLInputElement
-    const timeInput = dialog.querySelector('#new-task__time') as HTMLInputElement
+    const titleInput = dialog.querySelector('#new-task-title') as HTMLInputElement
+    const descriptionInput = dialog.querySelector('#new-task-description') as HTMLTextAreaElement
+    const dateInput = dialog.querySelector('#new-task-date') as HTMLInputElement
+    const timeInput = dialog.querySelector('#new-task-time') as HTMLInputElement
 
     if (dialog.returnValue === 'add') {
         const title = titleInput.value

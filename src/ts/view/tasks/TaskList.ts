@@ -31,9 +31,9 @@ function createLI(task : Task): HTMLLIElement {
     li.setAttribute('data-id', ""+task.id)
 
     li.innerHTML = TaskHtml
-    li.querySelector('#task__title').textContent = task.title
-    li.querySelector('#task__duedate').textContent = formatDate(task)
-    li.querySelector('#task__description').textContent = task.description
+    li.querySelector('#task-title').textContent = task.title
+    li.querySelector('#task-duedate').textContent = formatDate(task)
+    li.querySelector('#task-description').textContent = task.description
     li.querySelector('button').addEventListener('click', () => removeTask(task.id))
 
     return li
