@@ -6,7 +6,6 @@ import { v4 as uuid } from 'uuid'
 export function createNewTaskButton(project: string): HTMLButtonElement {
     const button = document.createElement('button')
 
-    button.id = 'new-task__btn'
     button.classList.add('btn')
     button.classList.add('btn-success')
     button.innerHTML = 'Add&nbsp;New&nbsp;Task'
