@@ -5,9 +5,11 @@ import { set } from 'date-fns'
 
 export function addNewTaskDialogEvents(): void {
     const dialog = document.querySelector('#new-task-dialog') as HTMLDialogElement
-    const button = document.querySelector('#new-task-button') as HTMLButtonElement
-    dialog.addEventListener('close', () => submitTask(dialog))
-    button.addEventListener('click', showNewTaskDialog)
+    const openButton = document.querySelector('#new-task-button') as HTMLButtonElement
+    const confirmButton = document.querySelector('#new-task-confirm-button') as HTMLButtonElement
+
+    openButton.addEventListener('click', showNewTaskDialog)
+    confirmButton.addEventListener('click', (e) => submitTask(e, dialog))
 }
 
 function showNewTaskDialog(): void {
@@ -36,16 +38,16 @@ function resetDialog() {
     confirmButton.textContent = 'Add New Task'
 }
 
-function submitTask(dialog: HTMLDialogElement): void {
+function submitTask(event: Event, dialog: HTMLDialogElement): void {
+    event.preventDefault()
+
     const task = getTask()
 
-    if (!task) {
-        return
-    }
-
-    if (dialog.returnValue === 'add') {
+    if (task) {
         pushTask(task)
     }
+
+    dialog.close()
 }
 
 function getTask(): Task | undefined {
