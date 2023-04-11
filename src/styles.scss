@@ -23,3 +23,7 @@
     display: grid;
     place-content: center;
 }
+
+.task:hover .task-button-group {
+    display: unset;
+}
