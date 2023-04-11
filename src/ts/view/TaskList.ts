@@ -39,7 +39,7 @@ function formatDate(task: Task): string {
 
 function dateOptions(hasTime: boolean): Intl.DateTimeFormatOptions {
     return {
-        year: '2-digit',
+        year: 'numeric',
         month: '2-digit',
         day: '2-digit',
         hour: hasTime ? '2-digit' : undefined,
