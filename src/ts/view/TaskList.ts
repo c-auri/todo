@@ -26,7 +26,7 @@ function createTask(task : Task): HTMLElement {
     li.querySelector('.task-title').textContent = task.title
     li.querySelector('.task-duedate').textContent = formatDate(task)
     li.querySelector('.task-description').textContent = task.description
-    li.querySelector('button').addEventListener('click', () => removeTask(task.id))
+    li.querySelector('button[data-type="delete"]').addEventListener('click', () => removeTask(task.id))
 
     return li
 }
