@@ -15,7 +15,11 @@
                     <%= htmlWebpackPlugin.options.title %>
                 </span>
                 <form class="d-flex gap-4">
-                    <div id="project-selection-container"></div>
+                    <div class="input-group">
+                        <span class="input-group-text">Project</span>
+                        <select class="form-select" id="project-selection" style="min-width:10rem;"></select>
+                        <button class="btn btn-secondary" type="button" id="new-project-button">+</button>
+                    </div>
                     <button class="btn btn-success" type="button" id="new-task-button">Add&nbsp;New&nbsp;Task</button>
                 </form>
             </div>

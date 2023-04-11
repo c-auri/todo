@@ -1,7 +1,8 @@
 import { Task } from './model/Task'
 import { LocalStorage } from './model/LocalStorage'
+import { initializeMenu } from './view/menu/Menu'
+import { renderProjectOptions } from './view/menu/ProjectSelection'
 import { renderTaskList } from './view/tasks/TaskList'
-import { renderMenu, initializeMenu } from './view/menu/Menu'
 
 const defaultProject = 'Inbox'
 
@@ -47,6 +48,6 @@ export function removeTask(id: string) {
 }
 
 function renderCurrentProject() {
-    renderMenu(storage.getProjects(), currentProject)
+    renderProjectOptions(storage.getProjects(), currentProject)
     renderTaskList(storage.getTasks(currentProject))
 }
