@@ -57,14 +57,15 @@
         </template>
     </main>
 
-    <dialog class="dialog needs-validation border rounded-4" id="project-dialog" novalidate>
-        <form method="dialog" class="border p-4 rounded-4" id="project-dialog-form">
+    <dialog class="dialog border rounded-4" id="project-dialog">
+        <form method="dialog" class="needs-validation border p-4 rounded-4" id="project-dialog-form" novalidate>
             <div class="mb-3">
                 <span class="h3 fw-bold">New Project</span>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="project-dialog-title" placeholder="Title" required>
+                <input type="text" class="form-control" id="project-dialog-title" placeholder="Title" required pattern="\S(.*\S)?">
                 <label class="form-label" for="project-dialog-title">Title</label>
+                <div class="invalid-feedback">Must not be emty or start with whitespace.</div>
             </div>
             <div class="d-flex justify-content-end gap-2">
                 <button class="btn btn-outline-secondary" type="button" id="project-dialog-cancel-button">Cancel</button>
@@ -73,14 +74,15 @@
         </form>
     </dialog>
 
-    <dialog class="dialog needs-validation border rounded-4" id="task-dialog" novalidate>
-        <form method="dialog" class="border p-4 rounded-4" id="task-dialog-form">
+    <dialog class="dialog border rounded-4" id="task-dialog">
+        <form method="dialog" class="needs-validation border p-4 rounded-4" id="task-dialog-form" novalidate>
             <div class="mb-3">
                 <span class="h3 fw-bold" id ="task-dialog-heading"></span>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="task-dialog-title" placeholder="Title" required>
+                <input type="text" class="form-control" id="task-dialog-title" placeholder="Title" required pattern="\S(.*\S)?">
                 <label class="form-label" for="task-dialog-title">Title</label>
+                <div class="invalid-feedback">Must not be emty or start with whitespace.</div>
             </div>
             <div class="input-group">
                 <span class="form-floating mb-3">

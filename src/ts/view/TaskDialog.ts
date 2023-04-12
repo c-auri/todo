@@ -16,7 +16,9 @@ export function addNewTaskDialogEvents(): void {
 
 export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
+    const form = document.querySelector('#task-dialog-form') as HTMLFormElement
     dialog.setAttribute('data-mode', mode)
+    form.classList.remove('was-validated')
 
     const headingElement = dialog.querySelector('#task-dialog-heading') as HTMLSpanElement
     const titleInput = dialog.querySelector('#task-dialog-title') as HTMLInputElement

@@ -13,7 +13,9 @@ export function addProjectDialogEvents(): void {
 
 function showProjectDialog() {
     const dialog = document.querySelector('#project-dialog') as HTMLDialogElement
+    const form = document.querySelector('#project-dialog-form') as HTMLFormElement
     const projectInput = document.querySelector('#project-dialog-title') as HTMLInputElement
+    form.classList.remove('was-validated')
     projectInput.value = ''
     dialog.showModal()
 }
