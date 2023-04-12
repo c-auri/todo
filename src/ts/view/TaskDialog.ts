@@ -23,6 +23,7 @@ export function addNewTaskDialogEvents(): void {
 
 export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
     dialog.setAttribute('data-id', mode === 'add' ? undefined : task.id)
+    dialog.setAttribute('data-status', task?.isDone ? 'done' : undefined)
     dialog.setAttribute('data-mode', mode)
     form.classList.remove('was-validated')
     
@@ -63,6 +64,7 @@ function getTask(): Task | undefined {
 
     return titleInput.value ? {
         id: dialog.getAttribute('data-id'),
+        isDone: dialog.getAttribute('data-status') === 'done',
         title: titleInput.value,
         project: getCurrentProject(),
         description: descriptionInput.value,

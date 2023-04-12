@@ -1,5 +1,5 @@
 import { Task } from '../model/Task'
-import { removeTask } from '../Controller'
+import { removeTask, editTask } from '../Controller'
 import { showTaskDialog } from './TaskDialog'
 import { isValid } from 'date-fns'
 
@@ -24,6 +24,10 @@ function createTask(task : Task): HTMLElement {
     const clone = template.content.cloneNode(true) as HTMLElement
     const item = clone.querySelector('li')
 
+    const status = item.querySelector('.task-status') as HTMLInputElement
+    status.addEventListener('click', (e) => updateStatus(e, task))
+    status.checked = task.isDone
+
     item.setAttribute('data-id', ""+task.id)
     item.querySelector('.task-title').textContent = task.title
     item.querySelector('.task-duedate').textContent = formatDate(task)
@@ -39,6 +43,12 @@ function createTask(task : Task): HTMLElement {
     item.addEventListener('mouseout', () => hideControls(item))
 
     return item
+}
+
+function updateStatus(event: Event, task: Task): void {
+    const status = event.target as HTMLInputElement
+    task.isDone = status.checked
+    editTask(task)
 }
 
 function formatDate(task: Task): string {
