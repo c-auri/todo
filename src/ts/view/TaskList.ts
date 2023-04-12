@@ -4,40 +4,40 @@ import { showTaskDialog } from './TaskDialog'
 import { isValid } from 'date-fns'
 
 export function renderTaskList(tasks: Task[]): void {
-    const ul = document.querySelector('#task-list')
-    ul.innerHTML = ''
+    const list = document.querySelector('#task-list')
+    list.innerHTML = ''
 
     for (const task of tasks) {
-        ul.appendChild(createTask(task))
+        list.appendChild(createTask(task))
     }
 
     if (tasks.length === 0)  {
-        ul.classList.add('hidden')
+        list.classList.add('hidden')
     } else {
-        ul.classList.remove('hidden')
+        list.classList.remove('hidden')
     }
 }
 
 function createTask(task : Task): HTMLElement {
     const template = document.querySelector('#task') as HTMLTemplateElement
     const clone = template.content.cloneNode(true) as HTMLElement
-    const li = clone.querySelector('li')
+    const item = clone.querySelector('li')
 
-    li.setAttribute('data-id', ""+task.id)
-    li.querySelector('.task-title').textContent = task.title
-    li.querySelector('.task-duedate').textContent = formatDate(task)
-    li.querySelector('.task-description').textContent = task.description
-    li.querySelector('button[data-type="edit"]').addEventListener('click', () => showTaskDialog('update', task))
-    li.querySelector('button[data-type="delete"]').addEventListener('click', () => removeTask(task.id))
+    item.setAttribute('data-id', ""+task.id)
+    item.querySelector('.task-title').textContent = task.title
+    item.querySelector('.task-duedate').textContent = formatDate(task)
+    item.querySelector('.task-description').textContent = task.description
+    item.querySelector('button[data-type="edit"]').addEventListener('click', () => showTaskDialog('update', task))
+    item.querySelector('button[data-type="delete"]').addEventListener('click', () => removeTask(task.id))
 
-    return li
+    return item
 }
 
 function formatDate(task: Task): string {
-    return isValid(task.date) ? task.date.toLocaleString([], dateOptions(task.hasTime)) : ''
+    return isValid(task.date) ? task.date.toLocaleString([], getDateOptions(task.hasTime)) : ''
 }
 
-function dateOptions(hasTime: boolean): Intl.DateTimeFormatOptions {
+function getDateOptions(hasTime: boolean): Intl.DateTimeFormatOptions {
     return {
         year: 'numeric',
         month: '2-digit',
