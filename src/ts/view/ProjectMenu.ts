@@ -1,6 +1,6 @@
+import { setCurrentProject } from '../Controller'
 import { addProjectDialogEvents } from "./ProjectDialog"
 import { addNewTaskDialogEvents } from "./TaskDialog"
-import { setCurrentProject } from '../Controller'
 
 const selection = document.querySelector('#project-selection') as HTMLSelectElement
 
