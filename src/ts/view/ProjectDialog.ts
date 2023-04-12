@@ -8,11 +8,11 @@ export function addProjectDialogEvents(): void {
 }
 
 function submitProject(isAdded: boolean): void {
-    const titleInput = document.querySelector('#new-project-title') as HTMLInputElement
+    const projectInput = document.querySelector('#new-project') as HTMLInputElement
 
     if (isAdded) {
-        pushProject(titleInput.value)
+        pushProject(projectInput.value)
     }
 
-    titleInput.value = ''
+    projectInput.value = ''
 }

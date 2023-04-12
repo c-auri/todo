@@ -13,9 +13,9 @@ export class LocalStorage {
         return JSON.parse(json)
     }
 
-    pushProject(title: string) {
+    pushProject(project: string) {
         const projects = this.getProjects()
-        projects.push(title)
+        projects.push(project)
         localStorage.setItem('projects', JSON.stringify(projects))
     }
 

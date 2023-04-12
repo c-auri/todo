@@ -25,9 +25,9 @@ export function setCurrentProject(project: string): void {
     renderCurrentProject()
 }
 
-export function pushProject(title: string): void {
-    storage.pushProject(title)
-    currentProject = title
+export function pushProject(project: string): void {
+    storage.pushProject(project)
+    currentProject = project
     renderCurrentProject()
 }
 
