@@ -26,7 +26,7 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     dialog.setAttribute('data-status', task?.isDone ? 'done' : undefined)
     dialog.setAttribute('data-mode', mode)
     form.classList.remove('was-validated')
-    
+
     headingElement.textContent = mode === 'add' ? 'New Task' : 'Update Task'
     titleInput.value = task?.title ?? ''
     dateInput.value = isValid(task?.date) ? format(task.date, 'yyyy-MM-dd') : ''
@@ -35,7 +35,7 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     priorityInput.checked = task?.hasHighPriority ?? false
 
     confirmButton.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Task`
-    
+
     dialog.showModal()
 }
 
@@ -46,16 +46,13 @@ function submitTask(event: Event): void {
         return
     }
 
+    const mode = document.querySelector('#task-dialog').getAttribute('data-mode')
     const task = getTask()
 
-    if (task) {
-        const mode = document.querySelector('#task-dialog').getAttribute('data-mode')
-
-        if (mode === 'add') {
-            pushTask(task)
-        } else if (mode === 'update') {
-            updateTask(task)
-        }
+    if (mode === 'add') {
+        pushTask(task)
+    } else if (mode === 'update') {
+        updateTask(task)
     }
 }
 
