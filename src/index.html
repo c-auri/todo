@@ -57,18 +57,18 @@
         </template>
     </main>
 
-    <dialog class="dialog border rounded-4" id="project-dialog">
-        <form method="dialog" class="border p-4 rounded-4">
+    <dialog class="dialog needs-validation border rounded-4" id="project-dialog" novalidate>
+        <form method="dialog" class="border p-4 rounded-4" id="project-dialog-form">
             <div class="mb-3">
                 <span class="h3 fw-bold">New Project</span>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="project-dialog-title" placeholder="Title">
+                <input type="text" class="form-control" id="project-dialog-title" placeholder="Title" required>
                 <label class="form-label" for="project-dialog-title">Title</label>
             </div>
             <div class="d-flex justify-content-end gap-2">
-                <button class="btn btn-outline-secondary">Cancel</button>
-                <button class="btn btn-success" value="add">Add Project</button>
+                <button class="btn btn-outline-secondary" type="button" id="project-dialog-cancel-button">Cancel</button>
+                <button class="btn btn-success" id="project-dialog-confirm-button">Add Project</button>
             </div>
         </form>
     </dialog>

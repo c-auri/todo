@@ -2,17 +2,31 @@ import { pushProject } from "../Controller"
 
 export function addProjectDialogEvents(): void {
     const dialog = document.querySelector('#project-dialog') as HTMLDialogElement
-    const button = document.querySelector('#submit-project-button')
-    dialog.addEventListener('close', () => submitProject(dialog.returnValue === 'add'))
-    button.addEventListener('click', () => dialog.showModal())
+    const openButton = document.querySelector('#submit-project-button')
+    const cancelButton = document.querySelector('#project-dialog-cancel-button')
+    const form = document.querySelector('#project-dialog-form') as HTMLFormElement
+
+    openButton.addEventListener('click', showProjectDialog)
+    cancelButton.addEventListener('click', () => dialog.close())
+    form.addEventListener('submit', submitProject)
 }
 
-function submitProject(isAdded: boolean): void {
+function showProjectDialog() {
+    const dialog = document.querySelector('#project-dialog') as HTMLDialogElement
     const projectInput = document.querySelector('#project-dialog-title') as HTMLInputElement
+    projectInput.value = ''
+    dialog.showModal()
+}
 
-    if (isAdded) {
-        pushProject(projectInput.value)
+function submitProject(event: Event): void {
+    const form = event.target as HTMLFormElement
+
+    if (!form.checkValidity()) {
+        event.preventDefault()
+        form.classList.add('was-validated')
+        return
     }
 
-    projectInput.value = ''
+    const projectTitle = document.querySelector('#project-dialog-title') as HTMLInputElement
+    pushProject(projectTitle.value)
 }
