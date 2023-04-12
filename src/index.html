@@ -18,9 +18,9 @@
                     <div class="input-group">
                         <span class="input-group-text">Project</span>
                         <select class="form-select bg-white" id="project-selection" style="min-width:10rem;"></select>
-                        <button class="btn btn-secondary" type="button" id="new-project-button">+</button>
+                        <button class="btn btn-secondary" type="button" id="submit-project-button">+</button>
                     </div>
-                    <button class="btn btn-success" type="button" id="new-task-button">Add&nbsp;New&nbsp;Task</button>
+                    <button class="btn btn-success" type="button" id="submit-task-button">Add&nbsp;New&nbsp;Task</button>
                 </form>
             </div>
         </nav>
@@ -57,14 +57,14 @@
         </template>
     </main>
 
-    <dialog class="dialog border rounded-4" id="new-project-dialog">
+    <dialog class="dialog border rounded-4" id="project-dialog">
         <form method="dialog" class="border p-4 rounded-4">
             <div class="mb-3">
                 <span class="h3 fw-bold">New Project</span>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="new-project" placeholder="Title">
-                <label class="form-label" for="new-project">Title</label>
+                <input type="text" class="form-control" id="project-dialog-title" placeholder="Title">
+                <label class="form-label" for="project-dialog-title">Title</label>
             </div>
             <div class="d-flex justify-content-end gap-2">
                 <button class="btn btn-outline-secondary">Cancel</button>

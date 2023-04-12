@@ -5,7 +5,7 @@ import { set, isValid, format } from 'date-fns'
 
 export function addNewTaskDialogEvents(): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
-    const openButton = document.querySelector('#new-task-button') as HTMLButtonElement
+    const openButton = document.querySelector('#submit-task-button') as HTMLButtonElement
     const cancelButton = document.querySelector('#task-dialog-cancel-button') as HTMLButtonElement
     const form = document.querySelector('#task-dialog-form') as HTMLFormElement
 
