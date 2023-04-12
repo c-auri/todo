@@ -3,8 +3,10 @@ import { removeTask } from '../Controller'
 import { showTaskDialog } from './TaskDialog'
 import { isValid } from 'date-fns'
 
+const list = document.querySelector('#task-list')
+const template = document.querySelector('#task') as HTMLTemplateElement
+
 export function renderTaskList(tasks: Task[]): void {
-    const list = document.querySelector('#task-list')
     list.innerHTML = ''
 
     for (const task of tasks) {
@@ -19,7 +21,6 @@ export function renderTaskList(tasks: Task[]): void {
 }
 
 function createTask(task : Task): HTMLElement {
-    const template = document.querySelector('#task') as HTMLTemplateElement
     const clone = template.content.cloneNode(true) as HTMLElement
     const item = clone.querySelector('li')
 

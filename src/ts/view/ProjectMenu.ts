@@ -2,13 +2,14 @@ import { addProjectDialogEvents } from "./ProjectDialog"
 import { addNewTaskDialogEvents } from "./TaskDialog"
 import { setCurrentProject } from '../Controller'
 
+const selection = document.querySelector('#project-selection') as HTMLSelectElement
+
 export function initializeMenu() {
     addProjectDialogEvents()
     addNewTaskDialogEvents()
 }
 
 export function renderProjectOptions(projects: string[], currentProject: string): void {
-    const selection = document.querySelector('#project-selection') as HTMLSelectElement
     selection.innerHTML = ''
 
     for (const project of projects) {
@@ -23,7 +24,5 @@ export function renderProjectOptions(projects: string[], currentProject: string)
         selection.appendChild(option)
     }
     
-    selection.addEventListener('change', () => {
-        setCurrentProject(selection.value)
-    })
+    selection.addEventListener('change', () => setCurrentProject(selection.value))
 }
