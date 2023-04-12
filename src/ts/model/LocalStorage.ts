@@ -30,12 +30,9 @@ export class LocalStorage {
         this.#setTasks(tasks)
     }
 
-    editTask(newTask: Task): void {
-        const tasks = this.getTasks()
-        const index = tasks.findIndex(task => task.id === newTask.id)
-        tasks.splice(index, 1)
-        tasks.push(newTask)
-        this.#setTasks(tasks)
+    editTask(task: Task): void {
+        this.removeTask(task.id)
+        this.pushTask(task)
     }
 
     removeTask(id: string): void {
