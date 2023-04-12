@@ -1,6 +1,5 @@
 import { Task } from "../model/Task"
 import { pushTask, editTask as updateTask, getCurrentProject } from "../Controller"
-import { v4 as uuid } from 'uuid'
 import { set, isValid, format } from 'date-fns'
 
 const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
@@ -22,6 +21,7 @@ export function addNewTaskDialogEvents(): void {
 }
 
 export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
+    dialog.setAttribute('data-id', mode === 'add' ? undefined : task.id)
     dialog.setAttribute('data-mode', mode)
     form.classList.remove('was-validated')
     
@@ -60,7 +60,7 @@ function getTask(): Task | undefined {
     const { date, hasTime } = getDueDateInfo(dateInput.value, timeInput.value)
 
     return titleInput.value ? {
-        id: uuid(),
+        id: dialog.getAttribute('data-id'),
         title: titleInput.value,
         project: getCurrentProject(),
         description: descriptionInput.value,

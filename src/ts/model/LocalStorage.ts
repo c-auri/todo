@@ -1,5 +1,6 @@
 import { Task } from "./Task"
 import { deserialize, serialize } from "./Serialization"
+import { v4 as uuid } from 'uuid'
 
 export class LocalStorage {
     constructor(defaultProject: string) {
@@ -25,6 +26,7 @@ export class LocalStorage {
     }
 
     pushTask(task: Task): void {
+        task.id = uuid()
         const tasks = this.getTasks()
         tasks.push(task)
         this.#setTasks(tasks)
@@ -38,6 +40,11 @@ export class LocalStorage {
     removeTask(id: string): void {
         const tasks = this.getTasks()
         const index = tasks.findIndex(task => task.id === id)
+
+        if (index === -1) {
+            throw new Error(`ID does not exist in storage: ${id}`)
+        }
+
         tasks.splice(index, 1)
         this.#setTasks(tasks)
     }
