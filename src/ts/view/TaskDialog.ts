@@ -28,11 +28,11 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     form.classList.remove('was-validated')
     
     headingElement.textContent = mode === 'add' ? 'New Task' : 'Update Task'
-    titleInput.value = task ? task.title : ''
-    dateInput.value = task ? isValid(task.date) ? format(task.date, 'yyyy-MM-dd') : '' : ''
-    timeInput.value = task ? task.hasTime ? format(task.date, "HH:mm") : '' : ''
-    descriptionInput.value = task ? task.description : ''
-    priorityInput.checked = task ? task.hasHighPriority : false
+    titleInput.value = task?.title ?? ''
+    dateInput.value = isValid(task?.date) ? format(task.date, 'yyyy-MM-dd') : ''
+    timeInput.value = task?.hasTime ? format(task.date, "HH:mm") : ''
+    descriptionInput.value = task?.description ?? ''
+    priorityInput.checked = task?.hasHighPriority ?? false
 
     confirmButton.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Task`
     
@@ -59,7 +59,7 @@ function submitTask(event: Event): void {
     }
 }
 
-function getTask(): Task | undefined {
+function getTask(): Task {
     const { date, hasTime } = getDueDateInfo(dateInput.value, timeInput.value)
 
     return {
