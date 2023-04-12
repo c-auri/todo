@@ -6,10 +6,12 @@ import { set, isValid, format } from 'date-fns'
 export function addNewTaskDialogEvents(): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
     const openButton = document.querySelector('#new-task-button') as HTMLButtonElement
-    const confirmButton = document.querySelector('#task-dialog-confirm-button') as HTMLButtonElement
+    const cancelButton = document.querySelector('#task-dialog-cancel-button') as HTMLButtonElement
+    const form = document.querySelector('#task-dialog-form') as HTMLFormElement
 
     openButton.addEventListener('click', () => showTaskDialog('add'))
-    confirmButton.addEventListener('click', (e) => submitTask(e, dialog))
+    cancelButton.addEventListener('click', () => dialog.close())
+    form.addEventListener('submit', submitTask)
 }
 
 export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
@@ -34,13 +36,11 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     dialog.showModal()
 }
 
-function submitTask(event: Event, dialog: HTMLDialogElement): void {
-    event.preventDefault()
-
+function submitTask(): void {
     const task = getTask()
 
     if (task) {
-        const mode = dialog.getAttribute('data-mode')
+        const mode = document.querySelector('#task-dialog').getAttribute('data-mode')
 
         if (mode === 'add') {
             pushTask(task)
@@ -48,8 +48,6 @@ function submitTask(event: Event, dialog: HTMLDialogElement): void {
             updateTask(task)
         }
     }
-
-    dialog.close()
 }
 
 function getTask(): Task | undefined {
