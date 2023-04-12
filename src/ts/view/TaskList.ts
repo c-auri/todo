@@ -31,6 +31,10 @@ function createTask(task : Task): HTMLElement {
     item.querySelector('button[data-type="edit"]').addEventListener('click', () => showTaskDialog('update', task))
     item.querySelector('button[data-type="delete"]').addEventListener('click', () => removeTask(task.id))
 
+    if (task.hasHighPriority) {
+        item.querySelector('.task-high-priority').classList.remove('hidden')
+    }
+
     return item
 }
 

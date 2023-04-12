@@ -5,4 +5,5 @@ export interface Task {
     description: string
     date: Date
     hasTime: boolean
+    hasHighPriority: boolean
 }

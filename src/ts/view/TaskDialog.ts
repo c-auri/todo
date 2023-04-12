@@ -13,6 +13,7 @@ const titleInput = dialog.querySelector('#task-dialog-title') as HTMLInputElemen
 const descriptionInput = dialog.querySelector('#task-dialog-description') as HTMLTextAreaElement
 const dateInput = dialog.querySelector('#task-dialog-date') as HTMLInputElement
 const timeInput = dialog.querySelector('#task-dialog-time') as HTMLInputElement
+const priorityInput = dialog.querySelector('#task-dialog-high-priority') as HTMLInputElement
 
 export function addNewTaskDialogEvents(): void {
     openButton.addEventListener('click', () => showTaskDialog('add'))
@@ -30,6 +31,7 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     dateInput.value = task ? isValid(task.date) ? format(task.date, 'yyyy-MM-dd') : '' : ''
     timeInput.value = task ? task.hasTime ? format(task.date, "HH:mm") : '' : ''
     descriptionInput.value = task ? task.description : ''
+    priorityInput.checked = task ? task.hasHighPriority : false
 
     confirmButton.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Task`
     
@@ -65,7 +67,8 @@ function getTask(): Task | undefined {
         project: getCurrentProject(),
         description: descriptionInput.value,
         date,
-        hasTime
+        hasTime,
+        hasHighPriority: priorityInput.checked
     } : undefined
 }
 

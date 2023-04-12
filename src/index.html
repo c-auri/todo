@@ -35,7 +35,8 @@
                         <input type="checkbox" class="form-check-input">
                     </span>
                     <div class="col">
-                        <div class="task-title fw-semibold"></div>
+                        <span class="task-title fw-semibold"></span>
+                        <span class="task-high-priority hidden badge bg-info">high priority</span>
                         <div class="task-duedate text-secondary"></div>
                         <div class="task-description mb-3"></div>
                     </div>
@@ -83,6 +84,10 @@
                 <input type="text" class="form-control" id="task-dialog-title" placeholder="Title" required pattern="\S(.*\S)?">
                 <label class="form-label" for="task-dialog-title">Title</label>
                 <div class="invalid-feedback">Must not be emty or start with whitespace.</div>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="task-dialog-high-priority">
+                <label class="form-check-label" for="flexCheckDefault">high priority</label>
             </div>
             <div class="input-group">
                 <span class="form-floating mb-3">
