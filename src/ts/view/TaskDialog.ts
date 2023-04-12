@@ -26,11 +26,11 @@ function resetDialog(mode: 'add' | 'update', task: Task) {
     const descriptionInput = dialog.querySelector('#task-dialog-description') as HTMLTextAreaElement
     const dateInput = dialog.querySelector('#task-dialog-date') as HTMLInputElement
     const timeInput = dialog.querySelector('#task-dialog-time') as HTMLInputElement
-    
+
     headingElement.textContent = mode === 'add' ? 'New Task' : 'Update Task'
     titleInput.value = task ? task.title : ''
     dateInput.value = task ? isValid(task.date) ? format(task.date, 'yyyy-MM-dd') : '' : ''
-    timeInput.value = task ? task.hasTime ? format(task.date, "hh:mm") : '' : ''
+    timeInput.value = task ? task.hasTime ? format(task.date, "HH:mm") : '' : ''
     descriptionInput.value = task ? task.description : ''
     
     const confirmButton = dialog.querySelector('#task-dialog-confirm-button') as HTMLButtonElement
