@@ -14,6 +14,7 @@ export function addNewTaskDialogEvents(): void {
 
 export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
+    dialog.setAttribute('data-mode', mode)
 
     const headingElement = dialog.querySelector('#task-dialog-heading') as HTMLSpanElement
     const titleInput = dialog.querySelector('#task-dialog-title') as HTMLInputElement
@@ -28,7 +29,6 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     descriptionInput.value = task ? task.description : ''
     
     const confirmButton = dialog.querySelector('#task-dialog-confirm-button') as HTMLButtonElement
-    confirmButton.value = mode
     confirmButton.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Task`
 
     dialog.showModal()
@@ -40,11 +40,11 @@ function submitTask(event: Event, dialog: HTMLDialogElement): void {
     const task = getTask()
 
     if (task) {
-        const button = event.target as HTMLButtonElement
+        const mode = dialog.getAttribute('data-mode')
 
-        if (button.textContent.includes('Add')) {
+        if (mode === 'add') {
             pushTask(task)
-        } else if (button.textContent.includes('Update')) {
+        } else if (mode === 'update') {
             updateTask(task)
         }
     }
