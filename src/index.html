@@ -73,13 +73,13 @@
         </form>
     </dialog>
 
-    <dialog class="dialog border rounded-4" id="task-dialog">
+    <dialog class="dialog needs-validation border rounded-4" id="task-dialog" novalidate>
         <form method="dialog" class="border p-4 rounded-4" id="task-dialog-form">
             <div class="mb-3">
                 <span class="h3 fw-bold" id ="task-dialog-heading"></span>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="task-dialog-title" placeholder="Title">
+                <input type="text" class="form-control" id="task-dialog-title" placeholder="Title" required>
                 <label class="form-label" for="task-dialog-title">Title</label>
             </div>
             <div class="input-group">

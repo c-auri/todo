@@ -36,7 +36,15 @@ export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): 
     dialog.showModal()
 }
 
-function submitTask(): void {
+function submitTask(event: Event): void {
+    const form = event.target as HTMLFormElement
+
+    if (!form.checkValidity()) {
+        event.preventDefault()
+        form.classList.add('was-validated')
+        return
+    }
+
     const task = getTask()
 
     if (task) {
