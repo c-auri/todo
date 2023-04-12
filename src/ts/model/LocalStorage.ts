@@ -32,9 +32,16 @@ export class LocalStorage {
         this.#setTasks(tasks)
     }
 
-    editTask(task: Task): void {
-        this.removeTask(task.id)
-        this.pushTask(task)
+    editTask(newTask: Task): void {
+        const tasks = this.getTasks()
+        const index = tasks.findIndex(task => task.id === newTask.id)
+
+        if (index === -1) {
+            throw new Error(`ID does not exist in storage: ${newTask.id}`)
+        }
+
+        tasks.splice(index, 1, newTask)
+        this.#setTasks(tasks)
     }
 
     removeTask(id: string): void {
