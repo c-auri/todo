@@ -14,12 +14,6 @@ export function addNewTaskDialogEvents(): void {
 
 export function showTaskDialog(mode: 'add' | 'update', task: Task = undefined): void {
     const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
-    resetDialog(mode, task)
-    dialog.showModal()
-}
-
-function resetDialog(mode: 'add' | 'update', task: Task) {
-    const dialog = document.querySelector('#task-dialog') as HTMLDialogElement
 
     const headingElement = dialog.querySelector('#task-dialog-heading') as HTMLSpanElement
     const titleInput = dialog.querySelector('#task-dialog-title') as HTMLInputElement
@@ -36,6 +30,8 @@ function resetDialog(mode: 'add' | 'update', task: Task) {
     const confirmButton = dialog.querySelector('#task-dialog-confirm-button') as HTMLButtonElement
     confirmButton.value = mode
     confirmButton.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Task`
+
+    dialog.showModal()
 }
 
 function submitTask(event: Event, dialog: HTMLDialogElement): void {
