@@ -16,13 +16,10 @@ export function renderProjectOptions(projects: string[], currentProject: string)
         const option = document.createElement('option')
         option.value = project
         option.textContent = project
-
-        if (project === currentProject) {
-            option.selected = true
-        }
+        option.selected = project === currentProject
 
         selection.appendChild(option)
     }
-    
+
     selection.addEventListener('change', () => setCurrentProject(selection.value))
 }
