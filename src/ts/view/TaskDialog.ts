@@ -62,7 +62,7 @@ function submitTask(event: Event): void {
 function getTask(): Task | undefined {
     const { date, hasTime } = getDueDateInfo(dateInput.value, timeInput.value)
 
-    return titleInput.value ? {
+    return {
         id: dialog.getAttribute('data-id'),
         isDone: dialog.getAttribute('data-status') === 'done',
         title: titleInput.value,
@@ -71,7 +71,7 @@ function getTask(): Task | undefined {
         date,
         hasTime,
         hasHighPriority: priorityInput.checked
-    } : undefined
+    }
 }
 
 function getDueDateInfo(dateString: string, time: string): { date: Date, hasTime: boolean } {
