@@ -2,9 +2,9 @@ import { Task } from "./Task"
 import { deserialize, serialize } from "./Serialization"
 
 export class LocalStorage {
-    constructor(projects: string[]) {
+    constructor(defaultProject: string) {
         if (!this.#isPopulated()) {
-            this.#populate(projects)
+            this.#populate(defaultProject)
         }
     }
 
@@ -30,8 +30,8 @@ export class LocalStorage {
         return !!localStorage.getItem('tasks')
     }
 
-    #populate(projects: string[]): void {
+    #populate(defaultProject: string): void {
         localStorage.setItem('tasks', JSON.stringify([]))
-        localStorage.setItem('projects', JSON.stringify(projects))
+        localStorage.setItem('projects', JSON.stringify([ defaultProject ]))
     }
 }

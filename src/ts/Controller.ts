@@ -11,7 +11,7 @@ let currentProject: string
 
 export function initialize() {
     currentProject = defaultProject
-    storage = new LocalStorage([currentProject])
+    storage = new LocalStorage(defaultProject)
     initializeMenu()
     renderCurrentProject()
 }
