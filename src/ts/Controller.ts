@@ -1,7 +1,6 @@
 import { Task } from './model/Task'
 import { LocalStorage } from './model/LocalStorage'
-import { initializeMenu } from './view/Menu'
-import { renderProjectOptions } from './view/ProjectSelection'
+import { initializeMenu, renderProjectOptions } from './view/ProjectMenu'
 import { renderTaskList } from './view/TaskList'
 
 const defaultProject = 'Inbox'
