@@ -26,34 +26,23 @@ export function setCurrentProject(project: string) {
 }
 
 export function pushProject(title: string) {
-    const projects = storage.getProjects()
-    projects.push(title)
-    storage.setProjects(projects)
+    storage.pushProject(title)
     currentProject = title
     renderCurrentProject()
 }
 
 export function pushTask(task: Task) {
-    const tasks = storage.getTasks()
-    tasks.push(task)
-    storage.setTasks(tasks)
+    storage.pushTask(task)
     renderCurrentProject()
 }
 
 export function editTask(newTask: Task) {
-    const tasks = storage.getTasks()
-    const index = tasks.findIndex(task => task.id === newTask.id)
-    tasks.splice(index, 1)
-    tasks.push(newTask)
-    storage.setTasks(tasks)
+    storage.editTask(newTask)
     renderCurrentProject()
 }
 
 export function removeTask(id: string) {
-    const tasks = storage.getTasks()
-    const index = tasks.findIndex(task => task.id === id)
-    tasks.splice(index, 1)
-    storage.setTasks(tasks)
+    storage.removeTask(id)
     renderCurrentProject()
 }
 

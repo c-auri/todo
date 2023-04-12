@@ -13,7 +13,9 @@ export class LocalStorage {
         return JSON.parse(json)
     }
 
-    setProjects(projects: string[]): void {
+    pushProject(title: string) {
+        const projects = this.getProjects()
+        projects.push(title)
         localStorage.setItem('projects', JSON.stringify(projects))
     }
 
@@ -22,8 +24,25 @@ export class LocalStorage {
         return project ? tasks.filter(task => task.project === project) : tasks
     }
 
-    setTasks(tasks: Task[]): void {
-        localStorage.setItem('tasks', serialize(tasks))
+    pushTask(task: Task): void {
+        const tasks = this.getTasks()
+        tasks.push(task)
+        this.#setTasks(tasks)
+    }
+
+    editTask(newTask: Task): void {
+        const tasks = this.getTasks()
+        const index = tasks.findIndex(task => task.id === newTask.id)
+        tasks.splice(index, 1)
+        tasks.push(newTask)
+        this.#setTasks(tasks)
+    }
+
+    removeTask(id: string): void {
+        const tasks = this.getTasks()
+        const index = tasks.findIndex(task => task.id === id)
+        tasks.splice(index, 1)
+        this.#setTasks(tasks)
     }
 
     #isPopulated(): boolean {
@@ -31,7 +50,11 @@ export class LocalStorage {
     }
 
     #populate(defaultProject: string): void {
-        localStorage.setItem('tasks', JSON.stringify([]))
+        this.#setTasks([])
         localStorage.setItem('projects', JSON.stringify([ defaultProject ]))
+    }
+
+    #setTasks(tasks: Task[]): void {
+        localStorage.setItem('tasks', serialize(tasks))
     }
 }
