@@ -35,6 +35,9 @@ function createTask(task : Task): HTMLElement {
         item.querySelector('.task-high-priority').classList.remove('hidden')
     }
 
+    item.addEventListener('mouseover', () => hightlightControls(item))
+    item.addEventListener('mouseout', () => hideControls(item))
+
     return item
 }
 
@@ -49,5 +52,32 @@ function getDateOptions(hasTime: boolean): Intl.DateTimeFormatOptions {
         day: '2-digit',
         hour: hasTime ? '2-digit' : undefined,
         minute: hasTime ? '2-digit' : undefined
+    }
+}
+
+function hightlightControls(item: HTMLElement): void {
+    const buttons = item.querySelectorAll('button')
+
+    for (const button of buttons) {
+        button.classList.remove('btn-outline-light')
+
+        switch (button.getAttribute('data-type')) {
+            case 'edit':
+                button.classList.add('btn-outline-secondary')
+                break
+            case 'delete':
+                button.classList.add('btn-outline-danger')
+                break
+        }
+    }
+}
+
+function hideControls(item: HTMLElement): void {
+    const buttons = item.querySelectorAll('button')
+
+    for (const button of buttons) {
+        button.classList.add('btn-outline-light')
+        button.classList.remove('btn-outline-secondary')
+        button.classList.remove('btn-outline-danger')
     }
 }
