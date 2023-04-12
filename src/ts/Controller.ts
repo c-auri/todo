@@ -20,33 +20,33 @@ export function getCurrentProject(): string {
     return currentProject
 }
 
-export function setCurrentProject(project: string) {
+export function setCurrentProject(project: string): void {
     currentProject = project
     renderCurrentProject()
 }
 
-export function pushProject(title: string) {
+export function pushProject(title: string): void {
     storage.pushProject(title)
     currentProject = title
     renderCurrentProject()
 }
 
-export function pushTask(task: Task) {
+export function pushTask(task: Task): void {
     storage.pushTask(task)
     renderCurrentProject()
 }
 
-export function editTask(newTask: Task) {
+export function editTask(newTask: Task): void {
     storage.editTask(newTask)
     renderCurrentProject()
 }
 
-export function removeTask(id: string) {
+export function removeTask(id: string): void {
     storage.removeTask(id)
     renderCurrentProject()
 }
 
-function renderCurrentProject() {
+function renderCurrentProject(): void {
     renderProjectOptions(storage.getProjects(), currentProject)
     renderTaskList(storage.getTasks(currentProject))
 }
