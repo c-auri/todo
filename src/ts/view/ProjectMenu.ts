@@ -4,7 +4,7 @@ import { addNewTaskDialogEvents } from "./TaskDialog"
 
 const selection = document.querySelector('#project-selection') as HTMLSelectElement
 
-export function initializeMenu() {
+export function initializeMenu(): void {
     addProjectDialogEvents()
     addNewTaskDialogEvents()
 }

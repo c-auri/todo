@@ -13,7 +13,7 @@ export function addProjectDialogEvents(): void {
     form.addEventListener('submit', submitProject)
 }
 
-function showProjectDialog() {
+function showProjectDialog(): void {
     form.classList.remove('was-validated')
     projectTitle.value = ''
     dialog.showModal()

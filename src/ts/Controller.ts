@@ -8,7 +8,7 @@ const defaultProject = 'Inbox'
 let storage: LocalStorage
 let currentProject: string
 
-export function initialize() {
+export function initialize():void {
     currentProject = defaultProject
     storage = new LocalStorage(defaultProject)
     initializeMenu()
