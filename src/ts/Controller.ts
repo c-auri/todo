@@ -6,27 +6,25 @@ import { renderTaskList } from './view/TaskList'
 const defaultProject = 'Inbox'
 
 let storage: LocalStorage
-let currentProject: string
 
 export function initialize():void {
-    currentProject = defaultProject
     storage = new LocalStorage(defaultProject)
     initializeMenu()
     renderCurrentProject()
 }
 
 export function getCurrentProject(): string {
-    return currentProject
+    return storage.getCurrentProject()
 }
 
 export function setCurrentProject(project: string): void {
-    currentProject = project
+    storage.setCurrentProject(project)
     renderCurrentProject()
 }
 
 export function pushProject(project: string): void {
     storage.pushProject(project)
-    currentProject = project
+    storage.setCurrentProject(project)
     renderCurrentProject()
 }
 
@@ -46,6 +44,7 @@ export function removeTask(id: string): void {
 }
 
 function renderCurrentProject(): void {
+    const currentProject = storage.getCurrentProject()
     renderProjectOptions(storage.getProjects(), currentProject)
     renderTaskList(storage.getTasks(currentProject))
 }

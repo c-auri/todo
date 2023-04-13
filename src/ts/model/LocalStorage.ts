@@ -9,6 +9,14 @@ export class LocalStorage {
         }
     }
 
+    getCurrentProject(): string {
+        return localStorage.getItem('currentProject')
+    }
+
+    setCurrentProject(project: string): void {
+        localStorage.setItem('currentProject', project)
+    }
+
     getProjects(): string[] {
         const json = localStorage.getItem('projects')
         return JSON.parse(json)
@@ -63,6 +71,7 @@ export class LocalStorage {
     #populate(defaultProject: string): void {
         this.#setTasks([])
         localStorage.setItem('projects', JSON.stringify([ defaultProject ]))
+        localStorage.setItem('currentProject', defaultProject)
     }
 
     #setTasks(tasks: Task[]): void {

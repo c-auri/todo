@@ -74,7 +74,7 @@ Bootstrap also was a nice addition to my tool box, as it provided me with easy t
 When it comes to the design of the app I also learned a good deal. It ended up becoming a mix of object-oriented and functional design that is nicely light-weight and worked out pretty well. Overall, I am happy with how my MVC implementation played out in the end and can see myself coming back to this project without too much of a headache.
 
 ## Possible Future Improvements
-- [ ] save current project
+- [x] store current project
 - [ ] improve the project menu
   - [ ] project deletion
   - [ ] project assignment
